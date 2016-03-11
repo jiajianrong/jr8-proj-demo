@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-sl")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./scrollload-one.scss">
+</head>
+<body>
+
+    <div class="search-btn">按价格排序重新加载</div>
+    <div class="search-btn-2">搜索按钮重新加载</div>
+    
+    <div id="list-wrap"></div>
+    <div class="sl-loading">加载中</div>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/scrollload-one/scrollload-one'],function(app){
+        app();
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

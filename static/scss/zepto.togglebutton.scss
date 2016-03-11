@@ -1,0 +1,52 @@
+/**
+ * toggle button
+ * 请勿给togglebutton设置padding
+ * 需要调整top请使用togglebutton的margin
+ * 或者调整togglebutton的父元素的padding
+ * 
+ * jiajianrong
+ */ 
+ 
+@mixin togglebutton(){
+        display:block;
+        overflow:hidden;
+        
+        width:70px;
+        height: 24px;
+        border-radius:18px;
+        
+        background: #EEE;
+        border:1px solid #EEE;
+        
+        &.toggle-off {
+            background: #EEE;
+            border:1px solid #EEE;
+        }
+        &.toggle-on {
+            background: orange;
+            border:1px solid orange;
+        }
+        
+        span{
+            display:block;
+            
+            width:30px;
+            height:24px;
+            line-height: 24px;
+            border-radius:18px;
+            
+            font-size:14px;
+            text-align:center;
+            
+            background-color:#fff;
+        }
+        
+        &.toggle-off span {
+            float:left;
+            color:gray;
+        }
+        &.toggle-on span {
+            float:right;
+            color:orange;
+        }
+}

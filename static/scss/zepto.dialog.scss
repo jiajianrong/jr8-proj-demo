@@ -1,0 +1,103 @@
+html{
+	font-size: 50px;
+}
+.dialog-tips-box{
+	margin:10% auto;
+	width: 5.25rem;
+	height: auto;
+	background-color: #fff;
+	border-radius: .2rem;
+
+	.dialog-box-title{
+		text-align: center;
+		width: 100%;
+		height: .9rem;
+		line-height: .9rem;
+		position: relative;
+		border-bottom: 1px solid #f1f2f3;
+
+		.title-con{
+			font-size: .27rem;
+			font-weight: bold;
+		}
+
+		.icon-close{
+
+			position: absolute;
+			right: .4rem;
+			top: .3rem;
+			.dialog-btn-close {
+				display: inline-block;
+				width: .3rem;
+				height: .3rem;
+				&:before , &:after{
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin: auto;
+					content: '';
+					width: .02rem;
+					height: .31rem;
+					background-color: rgb(255, 102, 34);
+				}
+				&:before {
+					transform: rotate(45deg);
+					-webkit-transform: rotate(45deg);
+				}
+				&:after {
+					transform: rotate(-45deg);
+					-webkit-transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+
+	.dialog-box-content{
+		padding: .25rem;
+		word-break:break-all;
+		overflow: scroll;
+	}
+}
+
+.dialog-box-single{
+	text-align: center;
+	border-top: 1px solid #f1f2f3;
+	height: .9rem;
+	line-height: .9rem;
+
+		a{
+			width: 100%;
+			color: #ff6622;
+		}	
+}
+
+.dialog-box-double{
+	border-top: 1px solid #f1f2f3;
+	height: .9rem;
+	line-height: .9rem;
+
+	.double-btn-cancle,.double-btn-true{
+		display: inline-block;
+		float: left;
+		width: 50%;
+		height: .9rem;
+		text-align: center;
+	}
+
+	.double-btn-true{
+		width: 49%;
+		border-left: 1px solid #f1f2f3;
+		color: #ff6622;
+	}
+}
+.hidden{
+	display:none
+}
+.alert-min-height{
+	min-height: 1.08rem;
+	max-height: 6.2rem;
+}
+.auto-min-height{
+	min-height: 2rem;
+	max-height: 7.1rem;
+}

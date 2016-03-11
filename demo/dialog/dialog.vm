@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./dialog.scss">
+</head>
+<body>
+<section class="info-wrap" id="component-page">
+    <div class = "dialog-alert">alert</div>
+    <div class = "dialog-confirm">confirm</div>
+    <div class = "dialog-custom">custom</div>
+</section>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/dialog/dialog'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>

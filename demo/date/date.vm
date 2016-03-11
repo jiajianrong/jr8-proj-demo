@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-date")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./date.scss">
+</head>
+<body>
+    
+    
+    <form id="form">
+            
+        <input type="text" name="start_date" placeholder = "请选择日期"  readonly/>
+    
+        <input type="text" name="end_date" placeholder = "请选择日期" value="1999-04-14" readonly/>
+    
+    
+    </form>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/date/date'],function(app){
+        app();
+    });
+    </script>
+
+</body>
+</html>

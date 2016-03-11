@@ -1,0 +1,89 @@
+@import "/static/scss/_button";
+@import "/static/scss/zepto.info";
+
+
+.form-label-icon {
+    background-position: center;
+    background-size: 29px;
+    background-repeat: no-repeat;
+}
+.icon-mobile {
+    background-image: url(/static/img/icons/icon-mobile.png?__inline);
+}
+.icon-phoneCode {
+    background-image: url(/static/img/icons/icon-phoneCode.png?__inline);
+}
+
+
+
+.ul-item {
+    padding: 12px;
+    
+    li {
+        display: -webkit-box;
+        border: 1px solid #bfbfbf;
+        border-radius: 3px;
+        margin-top: 15px;
+    }
+    
+    .validate-error {
+        padding-left: 0;
+    }
+    
+    li label {
+        display: block;
+        width: 45px;
+        height: 45px;
+    }
+        
+    li .w-input {
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        overflow: hidden;
+        position: relative;
+        
+        input {
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            display: block;
+            border: none;
+            background: none;
+        }
+        &.w-phonecode {
+            .multiply-box {
+                right: 120px;
+            }
+        }
+        .btn-phoneCode {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            right: 12px;
+            width: 92px;
+            line-height: 30px;
+            color: #666666;
+            border-radius: 3px;
+            text-align: center;
+            border: 1px solid #bfbfbf;
+            &.disabled {
+                border-color: #dedede;
+                background-color: #dedede;
+            }
+        }
+    }
+    
+}
+
+
+.actions {
+    padding: 60px 15px;
+    
+    .btn-submit {
+        @include button;
+        margin: 12px 0;
+    }
+}
+
+

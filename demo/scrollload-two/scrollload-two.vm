@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-sl")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./scrollload-two.scss">
+</head>
+<body>
+
+    <div class='spanList'>
+        <div class="titleA on">A列表</div><div class='titleB'>B列表</div>
+    </div>
+    <div class='listA'>
+        <div id="list-wrap1"></div>
+        <div class="sl-loading">加载中</div>
+    </div>
+    <div class='listB'>
+        <div id="list-wrap2"></div>
+        <div class="sl-loading">加载中</div>
+    </div>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/scrollload-two/scrollload-two'],function(app){
+        app();
+    });
+    </script>
+</body>
+</html>

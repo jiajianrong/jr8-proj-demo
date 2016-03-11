@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-toggleBtn")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./togglebutton.scss">
+</head>
+<body>
+
+    <div class="toggle-item">
+        <label>请选择是否：</label>
+        <div class="toggle-btn toggle-off">
+            <span class="off" data-alternative="on">off</span>
+            <input type="text" name="mortgage" value="0" data-alternative="1" />
+        </div>
+    </div>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/togglebutton/togglebutton'],function(app){
+        app();
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

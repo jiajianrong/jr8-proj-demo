@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "登录")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./login.scss">
+</head>
+<body>
+    #set($title = "58金融web demo系统登录")
+    #parse('/widget/navbar/navbar.vm')
+    
+    
+    <form id="form" method="post" action="/login">
+        
+        <ul class="ul-item">
+            <li>
+                <label class="icon-mobile form-label-icon"></label>
+                <div class="w-input">
+                    <input type="text" name="username" id="username" placeholder="用户名" 
+                           maxlength="20" autocomplete="off" value="$!{username}" required>
+                </div>
+            </li>
+            <li>
+                <label class="icon-phoneCode form-label-icon"></label>
+                <div class="w-input w-phonecode">
+                    <input type="password" name="password" id="password" placeholder="密码" 
+                           maxlength="20" autocomplete="off" required>
+                </div>
+            </li>
+        </ul>
+        
+        <section class="actions">
+            <button type="button" class="btn-submit">登录</button>
+        </section>
+            
+    </form>
+    
+    
+    
+    
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['page/login/login'],function(app){
+        app();
+    });
+    </script>
+</body>
+</html>

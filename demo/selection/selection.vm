@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./selection.scss">
+</head>
+<body>
+<section class = "test">
+    <div class="singleSelection-item">
+        <div class="singleSelection-border">
+            <label for="customerName">真实姓名</label>
+            <div class="singleSelection-con">
+                <input type="text" name="customerName" id="customerName" value="" maxlength="6" placeholder="请输入您的真实姓名" />
+             </div>
+        </div>
+    </div>  
+</section>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/selection/selection'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,54 @@
+@mixin mark-back($backgroundColor: #CCCCCC, $width: 11px, $rotate:120deg) {
+    display: block;
+    position: relative;
+    
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: $width;
+        height: 2px;
+        background: $backgroundColor;
+        top: 50%;
+        left: 50%;
+        margin-top: -1px;
+        margin-left: -12px;
+    }
+    &::after {
+        -webkit-transform: rotate($rotate);
+        -webkit-transform-origin: right 90%;
+    }
+    &::before {
+        -webkit-transform: rotate(-$rotate);
+        -webkit-transform-origin: right 10%;
+    }
+}
+
+
+
+.mark-forward {
+    display: block;
+    position: relative;
+}
+.mark-forward::after,
+.mark-forward::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 11px;
+    height: 2px;
+    background: #CCCCCC;
+    top: 50%;
+    left: 50%;
+    margin-top: -1px;
+}
+.mark-forward::after {
+    -webkit-transform: rotate(60deg);
+    -webkit-transform-origin: right 90%;
+}
+.mark-forward::before {
+    -webkit-transform: rotate(-60deg);
+    -webkit-transform-origin: right 10%;
+}
+

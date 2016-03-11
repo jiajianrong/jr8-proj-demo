@@ -1,0 +1,204 @@
+@import '/static/scss/_list.scss';
+@import "/static/scss/zepto.modal";
+
+.flex-box {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    box-orient: horizontal;
+    padding: 5px 10px 5px;
+}
+
+.search-bar {
+    padding: 10px 15px;
+    background-color: #cccccc;
+    .search-icon {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin-top:11px;
+        margin-left:10px;
+        border: none;
+
+        position: absolute;
+        background: url(/static/img/icons/icon-search.png?__inline) no-repeat 0px 0px;
+        background-size: 15px;
+    }
+    .search-input {
+        height:30px;
+        padding: 5px;
+        padding-left: 35px;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        display: block;
+        border-width: 0px;
+    }
+    .search-btn {
+        width: 60px;
+        display: block;
+        margin-left: 5px;
+        height:40px;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #eeeeee;
+        border-color: #eeeeee;
+        &.active {
+            background-color: darkorange;
+            border-color: darkorange;
+            color: white;
+            font-weight: bold;
+        }
+    }
+}
+.customer-item {
+    
+    display: block;
+    border-bottom: 1px solid #ccc;
+    text-align:left;
+    padding: 12px 15px 10px 20px;
+    background-color: #fff;
+    color: #aaa;
+    
+    .item-top {
+        display: -webkit-box;
+        padding: 2px 0;
+        .c-name {
+            width: 80px;
+            font-size: 17px;
+        }
+        .c-mobile {
+            width: 100px;
+            font-size: 18px;
+            -webkit-box-flex: 1;
+        }
+        .c-time {
+            width: 100px;
+            text-align:right;
+            font-size: 14px;
+        }
+
+    }
+    
+    .item-bottom {
+        display: -webkit-box;
+        padding: 2px 0;
+        font-size: 12px;
+        .c-apply-label {
+           width: 80px;
+        }
+        .c-follow-status  {
+            -webkit-box-flex: 1;
+            span {
+                border:1px solid #83c209;
+                border-radius: 11px;
+                padding: 2px 10px;
+                background-color: #83c209;
+                color: white;
+            }
+        }
+        .c-result {
+            width: 100px;
+            text-align:right;
+            font-size: 16px;
+        }
+    }
+    
+    // 审核状态，审核通过显示绿色
+    &.item-status-passed {
+        color: #424242;
+        .item-top {
+            .c-name {
+                color: #83c209;
+            }
+        }
+        .item-bottom {
+            .c-result {
+                color: #83c209;
+            }
+        }
+    }
+    
+    // 审核状态，可以点击
+    &.item-mark {
+        @include list-item-mark();
+    }
+}
+
+
+
+
+
+/*弹出菜单*/
+#filter-down-wrapper {
+    position: absolute;
+    right: 11px;
+    top: 46px;
+    z-index: 3;
+
+    a {
+        overflow: hidden;
+        display: block;
+
+        &:link, &:visited {
+            color: #666666;
+        }
+    }
+
+    .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 10px solid white;
+        -webkit-transform: translate(240px)
+    }
+
+    #filter-down-menu {
+        padding: 10px;
+        border-radius: 10px;
+        right: 0px;
+        top: 0px;
+        background: white;
+
+        section {
+            h3 {
+                color: black;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .filter-option {
+                //box-flex : 1;
+                width: 75px;
+                display: block;
+                margin: 6px 2px;
+                padding: 8px 2px;
+                text-align: center;
+                color: #757c85;
+                border: 1px solid #757c85;
+                border-radius: 6px;
+                position: relative;
+                &.active {
+                    border: 1px solid darkorange;
+                    color: darkorange;
+                    .icon {
+                        width: 20px;
+                        height:20px;
+                        position: absolute;
+                        padding: 0px;
+                        margin: 0px;
+                        right: 0px;
+                        bottom: 0px;
+                        background: url(/static/img/icons/filter-option-icon.png?__inline) no-repeat 0px 0px;
+                        background-size: 20px;
+                    }
+
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+

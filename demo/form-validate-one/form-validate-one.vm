@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./form-validate-one.scss">
+</head>
+<body>
+
+    <form id="form">
+    
+        <div class="validate">
+            <span>姓名:</span>
+            <input type="text" name="UserName" placeholder = "非空，通过dom-rule校验" autocomplete = "on"
+            data-validate='{"errmsg":"姓名不允许为空","rule":"isNonEmpty"}' />
+        </div>
+
+        <div class="validate">
+            <span>身份证号:</span>
+            <input type="text" name="CardNum"  placeholder = "通过dom-regexp校验" autocomplete = "on"
+            data-validate='{"errmsg":"身份证不正确","regexp":"/(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)/"}' />
+        </div>
+
+        <div class="validate">
+            <span>手机号:</span>
+            <input type="text" name="PhoneNum" placeholder = "dom不支持vfunc方式校验" autocomplete = "on" />
+        </div>
+        
+        <section class="actions">
+            <button type="button" class="btn-validate">验证</button>
+        </section>
+        
+    </form>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/form-validate-one/form-validate-one'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,53 @@
+@import '/static/scss/_mark.scss';
+
+.navbar {
+    position: relative;
+    height: 44px;
+    line-height: 45px;
+    padding: 0 12px;
+    background-color: #eee;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+    font-size: 17px;
+
+    .title {
+        
+    }
+    .navbar-l {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 100%;
+    }
+    .navbar-r {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+        height: 100%;
+        padding-right: 20px;
+    }
+    
+    .mark-back {
+        @include mark-back;
+        position: absolute;
+    }
+    .logout {
+        color: darkorange;
+        font-weight: bold;
+    }
+    
+    
+    .mark-menu {
+        background: url(/static/img/icons/icon-menu.png?__inline) no-repeat 10px 10px;
+        background-size: 30px;
+    }
+    
+    .filter-menu {
+        background: url(/static/img/icons/icon-filter.png?__inline) no-repeat 30px 10px;
+        background-size: 25px;
+    }
+}
+
+

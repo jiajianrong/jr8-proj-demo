@@ -1,0 +1,180 @@
+{
+  "rows":[
+  
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3},
+          
+          
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"18999999999",
+           "passTime":"2015-10-20 17:21:34",
+           "cur_status":5,
+           "userId":157,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"大连市",
+           "channel":"来源二",
+           "mobile":"13777777777",
+           "passTime":"2015-10-20 15:59:55",
+           "cur_status":3,
+           "userId":90,
+           "username":"没人要",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"深圳市",
+           "channel":"来源一",
+           "mobile":"15222222222",
+           "passTime":"2015-10-20 15:26:50",
+           "userId":156,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15444444444",
+           "passTime":"2015-10-15 17:53:12",
+           "userId":85,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3},
+           
+           
+           {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3},
+          
+          
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"18999999999",
+           "passTime":"2015-10-20 17:21:34",
+           "cur_status":5,
+           "userId":157,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"大连市",
+           "channel":"来源二",
+           "mobile":"13777777777",
+           "passTime":"2015-10-20 15:59:55",
+           "cur_status":3,
+           "userId":90,
+           "username":"没人要",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"深圳市",
+           "channel":"来源一",
+           "mobile":"15222222222",
+           "passTime":"2015-10-20 15:26:50",
+           "userId":156,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15444444444",
+           "passTime":"2015-10-15 17:53:12",
+           "userId":85,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3},{"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3},
+          
+          
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"18999999999",
+           "passTime":"2015-10-20 17:21:34",
+           "cur_status":5,
+           "userId":157,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"大连市",
+           "channel":"来源二",
+           "mobile":"13777777777",
+           "passTime":"2015-10-20 15:59:55",
+           "cur_status":3,
+           "userId":90,
+           "username":"没人要",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"深圳市",
+           "channel":"来源一",
+           "mobile":"15222222222",
+           "passTime":"2015-10-20 15:26:50",
+           "userId":156,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15444444444",
+           "passTime":"2015-10-15 17:53:12",
+           "userId":85,
+           "username":"测试",
+           "followRecord": 0},
+           
+           
+          {"cardRegion":"北京市",
+           "channel":"来源一",
+           "mobile":"15333333333",
+           "apply_time":"2015-10-21",
+           "audit_status":4,
+           "cur_status":4,
+           "userId":160,
+           "username":"测试",
+           "followRecord": 3}],
+  "total": 5
+}

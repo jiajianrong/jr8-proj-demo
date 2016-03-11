@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./radio.scss">
+</head>
+<body>
+<section class = "test">
+    <div class="radio-item" id="xinYongKa">
+        <div class="radio-border">
+            <label>信用卡</label>
+            <div class="radio-con">
+                <a class="radio-user"><input type="radio" name="xinyong" value="有" >有</a>
+                <a class="radio-user"><input type="radio" name="xinyong" value="无">无</a>
+            </div>
+        </div>
+    </div> 
+</section>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/radio/radio'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="./navbar.scss">
+    
+    
+<header class="navbar">
+    
+    #if($backHref)
+    <a class="mark-back navbar-l" href="$!{backHref}"></a>
+    #end
+
+    #if($logout)
+    <a class="navbar-l logout" href="$!{logout}">退出</a>
+    #end
+    
+    <span class="title">$!{title}</span>
+    
+    #if($menu=="dropdown")
+    <a class="mark-menu navbar-r" href="javascript:;"></a>
+    #end
+
+    #if($menu=="filter")
+    <a class="filter-menu navbar-r" href="javascript:;"></a>
+    #end
+
+</header>
+
+

@@ -1,0 +1,77 @@
+@import "/static/scss/_mark";
+
+.sl-loading {
+    width: 100%;
+    height: 80px;
+    padding-top: 20px;
+    background: url(/static/img/loading.gif) no-repeat #fff center 50px;
+    background-size: 30px;
+    text-align: center;
+    color: #cacaca;
+}
+
+
+
+.sl-empty {
+    color: #a6afb9;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 12px;
+}
+
+
+
+
+//----------
+// 右箭头
+//----------
+/* @mixin list-item-mark($backgroundColor: #CCCCCC, $width: 7px, $rotate:60deg){
+    
+    display: block;
+    position: relative;
+    padding-right: 15px;
+    
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: $width;
+        height: 2px;
+        background-color: $backgroundColor;
+        top: 50%;
+        right: 6px;
+        margin-top: -1px;
+    }
+    
+    &::after {
+        -webkit-transform: rotate($rotate);
+        -webkit-transform-origin: right 90%;
+    }
+    &::before {
+        -webkit-transform: rotate(-$rotate);
+        -webkit-transform-origin: right 10%;
+    }
+} */
+
+
+@mixin list-item-mark($backgroundColor: #CCCCCC, $width: 7px, $rotate:60deg){
+    
+    @include mark-back();
+
+    padding-right: 15px;
+    
+    &::after,
+    &::before {
+        width: $width;
+        left: initial;
+        right: 6px;
+    }
+    
+    &::after {
+        -webkit-transform: rotate($rotate);
+    }
+    &::before {
+        -webkit-transform: rotate(-$rotate);
+    } 
+} 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./fileUpLoadTest.scss">
+</head>
+<body>
+<section class = "container"></section>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/fileUpLoadTest/fileUpLoadTest'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>

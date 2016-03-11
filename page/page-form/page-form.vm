@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "放款申请")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./page-form.scss">
+</head>
+#* /////////////////////// Maps Start ///////////////////// *#
+#set($firstPayRatioMap = {
+    "0": "0%",
+    "50": "50%"
+})
+#set($cycleMap = {
+    "12": "12个月",
+    "24": "24个月",
+    "36": "36个月"
+})
+#set($contractTypeMap = {
+    "1": "类型1",
+    "2": "类型2",
+    "3": "类型3",
+    "4": "类型4"
+})
+#set($dealerBankMap = {
+    "0105":"测试测试",
+    "0104":"测试测试",
+    "0302":"测试测试",
+    "0305":"测试测试",
+    "0303":"测试测试",
+    "0318":"测试测试",
+    "0308":"测试测试",
+    "0103":"测试测试",
+    "0102":"测试测试"
+})
+#set($repayBankMap = {
+    "0105":"测试测试",
+    "0104":"测试测试",
+    "0302":"测试测试",
+    "0305":"测试测试",
+    "0303":"测试测试",
+    "0318":"测试测试",
+    "0308":"测试测试",
+    "0103":"测试测试",
+    "0102":"测试测试"
+})
+#macro( ModuleMap $whatMap $selectedVal)
+    #foreach( $key in $whatMap.keySet())
+        <option value="$!{key}" #if($key == $selectedVal)selected#end>$!{whatMap.get($key)}</option>
+    #end
+#end
+
+#* /////////////////////// Maps End /////////////////////// *#
+
+<body>
+    #set($title = "放款申请")
+    #set($backHref = "/market/customer/detail?userId=$!{userId}")
+    #parse('/widget/navbar/navbar.vm')
+
+
+
+    <form id="form" action="/market/customer/loan/apply2">
+    <div class="loan-application">
+        <input type="hidden" id = "userId" value = $!{userId} name = "userId"  />
+        <input type="hidden" class="editFlag" data-value='$!{editFlag}' />
+
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <select id="contractType" name="contractType">
+                #ModuleMap( $contractTypeMap $contractType )
+            </select>
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型(元)</div>
+            <input class="col-1" type="number" value="$!{financeAmount}" name="financeAmount" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型(%)</div>
+            <input class="col-1" type="number" value="$!{firstPayRatio}" name="firstPayRatio" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            ##0有1无
+            #if($mortgage=="0")
+            <div class="toggle-btn toggle-on">
+                <span data-alternative="off">on</span>
+                <input type="hidden" name="mortgage" value="0" data-alternative="1" />
+            </div>
+            #else
+            <div class="toggle-btn toggle-off">
+                <span data-alternative="on">off</span>
+                <input type="hidden" name="mortgage" value="1" data-alternative="0" />
+            </div>
+            #end
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型(非必填)</div>
+            <input class="col-1 region-related" type="text" value="$!{indicator}" name="indicator" />
+        </div>
+        
+
+        <div class="divider"></div>
+
+
+        <div class="loan-item flex-box">
+            <div>类型(元)</div>
+            <input class="col-1" type="number" value="$!{carDealPrice}" name="carDealPrice" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{models}" name="models" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{frameNo}" name="frameNo" 
+                data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text"  value="$!{brand}" name="brand" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型(非必填)</div>
+            <input class="col-1" type="text" id="cardNo" value="$!{cardNo}" name="cardNo"  />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{color}" name="color" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{firstCardDate}" name="firstCardDate" />
+        </div>
+        
+        
+        <div class="divider"></div>
+        
+        
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{dealerName}" name="dealerName" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" value="$!{idCard}" name="idCard" id="idCard" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="number" value="$!{dealerBankCardNo}" name="dealerBankCardNo" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <select name="dealerOpenBank" data-value="$!{dealerOpenBank}" placeholder="类型" class="sel-combobox">
+                <option value="-1">请选择</option>
+                #ModuleMap( $dealerBankMap $dealerOpenBank )
+            </select>
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" name="dealerOpenPartBank" value="$!{dealerOpenPartBank}" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text" name="dealerOpenBranchBank" value="$!{dealerOpenBranchBank}" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>邮箱(非必填)</div>
+            <input class="col-1" type="text" name="mail" value="$!{mail}" />
+        </div>
+
+        
+        <div class="divider"></div>
+        
+        
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text"  value="$!{repayAccount}" name="repayAccount" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="text"  value="$!{repayIdCardNo}" name="repayIdCardNo" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <input class="col-1" type="number" value="$!{repayBankCardNo}" name="repayBankCardNo" />
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <select name="repayOpenBank" data-value="$!{repayOpenBank}" placeholder="类型" class="sel-combobox">
+                <option value="-1">请选择</option>
+                #ModuleMap( $repayBankMap $repayOpenBank )
+            </select>
+        </div>
+        <div class="loan-item flex-box">
+            <div>类型(非必填)</div>
+            <input class="col-1" type="number" name="reservedPhone" value="$!{reservedPhone}"/>
+        </div>
+
+        <section class="actions">
+            <button type="button" class="btn-next-step">下一步</button>
+        </section>
+
+        
+    </div>
+    </form>
+
+
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['page/page-form/page-form'],function(app){
+        app();
+    });
+    </script>
+</body>
+</html>
+

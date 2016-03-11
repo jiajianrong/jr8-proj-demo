@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "列表")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./page-list.scss">
+</head>
+<body>
+    #set($title = "列表")
+    #set($menu = "filter")
+    #set($logout = "/logout")
+    #parse('/widget/navbar/navbar.vm')
+
+    <div class="search-bar flex-box">
+        <div class="search-icon"></div>
+        <input type="text" placeholder="搜索" class="search-input" />
+        <input type="button" value="搜索" class="search-btn"/>
+    </div>
+    <div id="list-wrap"></div>
+    <div class="sl-loading">加载中</div>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['page/page-list/page-list'],function(app){
+        app();
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

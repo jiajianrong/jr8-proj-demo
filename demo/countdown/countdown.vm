@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-countdown")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./countdown.scss">
+</head>
+<body>
+
+    <div>
+        <span>1.</span><a href="javascript:;" class="clickBtn1">23天12时3分2秒</a><br>
+        <span>2.</span><a href="javascript:;" class="clickBtn2">点击开始倒计时</a><br>
+    </div>
+
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/countdown/countdown'],function(app){
+        app();
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

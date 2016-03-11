@@ -1,0 +1,164 @@
+@import "/static/scss/_button";
+@import "/static/scss/zepto.info";
+@import "/static/scss/zepto.togglebutton";
+
+
+.flex-box {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    box-orient: horizontal;
+    padding: 5px 10px 5px;
+}
+
+.col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    width:0%;
+}
+
+// 进度条 (目前只支持两种状态， step1 & step2)
+@mixin progressBar($height:20px,$fontSize: 12px) {
+    $progress-data: (step1, #ff662c, #ccc, #ccc), (step2, #ff662c, #ff662c, #ccc);
+    @each $step, $color1, $color2, $color3 in $progress-data {
+        .progress-bar-#{$step} {
+            color: #ffffff;
+            font-size: $fontSize;
+            font-weight: bold;
+
+            .col-1 {
+                background: $color2;
+                height: $height;
+                line-height:$height;
+                padding-left: 5px;
+                &:first-child {
+                    border-radius: $height/2 0px 0px $height/2;
+                    background: $color1;
+                }
+                &:last-child {
+                    border-radius: 0px $height/2 $height/2 0px;
+                    background: $color3;
+                }
+            }
+            .arrow-left-top-2 {
+                width: 0;
+                height: 0;
+                border-top: 0px solid transparent;
+                border-bottom: $height/2 solid transparent;
+                border-right: $height/2 solid $color2;
+            }
+            .arrow-left-bottom-2 {
+                width: 0;
+                height: 0;
+                border-top: $height/2 solid transparent;
+                border-bottom: 0px solid transparent;
+                border-right: $height/2 solid $color2;
+            }
+            .arrow-right-1 {
+                width: 0;
+                height: 0;
+                border-top: $height/2 solid transparent;
+                border-bottom: $height/2 solid transparent;
+                border-left: $height/2 solid $color1;
+            }
+            .arrow-left-top-3 {
+                width: 0;
+                height: 0;
+                border-top: 0px solid transparent;
+                border-bottom: $height/2 solid transparent;
+                border-right: $height/2 solid $color3;
+            }
+            .arrow-left-bottom-3 {
+                width: 0;
+                height: 0;
+                border-top: $height/2 solid transparent;
+                border-bottom: 0px solid transparent;
+                border-right: $height/2 solid $color3;
+            }
+            .arrow-right-2 {
+                width: 0;
+                height: 0;
+                border-top: $height/2 solid transparent;
+                border-bottom: $height/2 solid transparent;
+                border-left: $height/2 solid $color2;
+            }
+        }
+    }
+
+}
+
+@include progressBar(20px);
+
+
+
+
+.loan-application {
+    background: #ffffff;
+    font-size: 16px;
+
+    .loan-item {
+        height: 30px;
+        padding-top: 20px;
+        div:first-child {
+            //width: 130px;
+            margin-right:20px;
+            line-height: 20px;
+            padding: 5px 0px;
+        }
+        input {
+            width: 100%;
+            line-height: 30px;
+            display: block;
+            border-color: #cccccc;
+            -webkit-appearance: none;
+            border-width: 0px;
+            border-bottom: 1px solid #cccccc;
+            border-radius: 0px;
+            &:focus {
+                border-width: 0px;
+                border-bottom: 1px solid #cccccc;
+            }
+        }
+    }
+    .divider {
+        width: 100%;
+        height: 10px;
+        background: #f0f0f2;
+        border: 1px solid #ccc;
+        border-width: 1px 0px;
+    }
+    .divider2 {
+        width: 100%;
+        height: 30px;
+        background: #f0f0f2;
+        border: 1px solid #ccc;
+        border-width: 1px 0px;
+        line-height: 20px;
+        padding-top: 20px;
+        padding-left: 10px;
+    }
+    .remark {
+        padding: 0px 10px;
+        textarea {
+            margin: 16px 0;
+            -webkit-appearance: none;
+            border: 1px solid #cccccc;
+        }
+    }
+    .actions {
+        padding: 0px 10px;
+        .btn-next-step {
+            @include button;
+            margin: 16px 0;
+        }
+    }
+    section {
+        padding: 0px 10px;
+    }
+}
+
+
+
+
+.toggle-btn{
+    @include togglebutton;
+}

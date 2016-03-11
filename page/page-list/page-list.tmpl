@@ -1,0 +1,39 @@
+
+<% for ( var item, i=0, ilen= obj.rows.length;  i < ilen && (item = obj.rows[i]); i++ ) {
+
+    var item_href = item.audit_status != 4 ? "javascript:;" : "/page/detail?userId=" + item.userId;
+
+    var item_status_passed = item.audit_status != 4 ? "" : "item-status-passed item-mark";
+    
+    var star_mobile = item.mobile;
+    
+    if(item.audit_status != 4) {
+        star_mobile = item.mobile.split("");
+        star_mobile.splice(3,4,"*","*","*","*");
+        star_mobile = star_mobile.join("");
+    }
+%>
+
+    <a href=<%=item_href%> class="customer-item <%=item_status_passed%>">
+        <section class="item-top">
+            <div class="c-name">
+                <%=item.username%></div>
+            <div class="c-mobile">
+                <%=star_mobile%></div>
+            <div class="c-time">
+                <%=item.apply_time%></div>
+        </section>
+        <section class="item-bottom">
+            <div class="c-apply-label">
+                <%=item.channel%></div>
+            <div class="c-follow-status">
+                <%if(item.followRecord!=0) {%>
+                <span>
+                    <%=item.followRecord_str%></span>
+                <%}%></div>
+            <div class="c-result">
+                <%=item.cur_status_str%></div>
+        </section>
+    </a>
+
+<% } %>

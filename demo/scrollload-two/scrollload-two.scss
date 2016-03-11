@@ -1,0 +1,58 @@
+@import '/static/scss/_list.scss';
+
+
+.spanList{
+    display: -webkit-box;
+    div{
+        -webkit-box-flex:1;
+        color: #333333;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+    }
+    .on{
+        color: #ffffff;
+        background-color: red;
+    }
+
+}
+.list2{
+    display: none;
+}
+.customer-item {
+    
+    display: block;
+    border-bottom: 1px solid #ccc;
+    text-align:left;
+    padding: 12px 15px 10px 20px;
+    background-color: #fff;
+    color: #aaa;
+    
+    .item-top {
+        display: -webkit-box;
+        padding: 2px 0;
+        .c-name {
+            width: 80px;
+            font-size: 17px;
+        }
+        .c-mobile {
+            width: 100px;
+            font-size: 18px;
+            -webkit-box-flex: 1;
+        }
+        .c-time {
+            width: 100px;
+            text-align:right;
+            font-size: 14px;
+        }
+
+    }
+    
+}
+
+
+
+
+
+
+

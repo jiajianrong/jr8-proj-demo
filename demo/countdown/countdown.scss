@@ -1,0 +1,27 @@
+
+%btn{
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    margin: 10px;
+    text-align: center;
+}
+
+
+.clickBtn1, .clickBtn2{
+    @extend %btn;
+    background-color: red;
+}
+.unclickBtn{
+    @extend %btn;
+    background-color: gray;
+}
+
+
+
+
+
+
+

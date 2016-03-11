@@ -1,0 +1,36 @@
+@import "/static/scss/zepto.modal";
+
+.modal-info {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  z-index: 500;
+  -webkit-animation: info 2s linear;
+  -webkit-transform: translateY(-50%);
+  //opacity: 0;
+  
+  .modal-info-content {
+    display: inline-block;
+    padding: 10px;
+    background-color: #000;
+    border-radius: 2px;
+  }
+}
+@-webkit-keyframes info {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
