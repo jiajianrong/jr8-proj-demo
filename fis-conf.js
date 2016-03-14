@@ -1,15 +1,23 @@
 /**
- * README
+ * README 
+ * 使用步骤
  * 
- * 安装jr8
+ * step 1
+ * 直接npm安装jr8
  * npm install jr8 -g
+ * 或者使用淘宝代理安装jr8（推荐使用代理，因为直接npm安装的话网速太慢了）
+ * npm install -g jr8 --registry=https://registry.npm.taobao.org
  * 
+ * step 2
  * 编译到本地tomcat
  * jr8 release -cw
  * 
+ * step 2
  * 编译给Javaer
  * jr8 release -comd ../out-your-path publish
  * 
+ * 
+ * 其他
  * 
  * 2016-02-16
  * 新加性能监控功能
@@ -24,45 +32,6 @@
 
 var IS_PUBLISH = /\bpublish\b/i.test(process.title);
 
-
-
-
-
-// --------------------------------
-// 发布目录
-// --------------------------------
-fis.config.merge({
-    deploy: {
-        publish: {
-            to: '../output-111'
-        }
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-// --------------------------------
-// 性能统计server配置
-// --------------------------------
-fis.config.merge({
-    settings: {
-        postpackager: {
-            'performance-framework': {
-                urlPrefix: 'http://1.1.1.1:1001/saveTime?project=projName'
-            }
-        }
-    }
-})
 
 
 
@@ -203,7 +172,7 @@ common_roadmap_path = common_roadmap_path.concat([
 
     {
         reg: /^\/(page|widget|demo)\/(.+)\.vm$/i,
-        release: 'WEB-INF/views/$1/$2.vm',
+        release: '/WEB-INF/views/$1/$2.vm',
         isViews: true
     }
 
@@ -243,3 +212,40 @@ fis.config.set('roadmap', {
 
 
 
+fis.config.merge({
+    
+    // --------------------------------
+    // 通用 roadmap 配置
+    // --------------------------------
+    roadmap: {
+        
+        ext: {
+            vm: IS_PUBLISH ? 'html' : 'vm',
+            scss: 'css'
+        },
+    
+        path: common_roadmap_path.concat(fis.config.get('roadmap.path', []))
+    },
+    
+    
+    // --------------------------------
+    // 发布目录
+    // --------------------------------
+    deploy: {
+        publish: {
+            to: '../output-111'
+        }
+    },
+    
+    
+    // --------------------------------
+    // 性能统计server配置
+    // --------------------------------
+    settings: {
+        postpackager: {
+            'performance-framework': {
+                urlPrefix: 'http://1.1.1.1:1111/saveTime?project=projName'
+            }
+        }
+    }
+});
