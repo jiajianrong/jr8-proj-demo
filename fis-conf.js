@@ -187,20 +187,6 @@ common_roadmap_path = common_roadmap_path.concat([
 
 
 
-// --------------------------------
-// 通用 roadmap 配置
-// --------------------------------
-fis.config.set('roadmap', {
-
-    ext: {
-        vm: IS_PUBLISH ? 'html' : 'vm',
-        scss: 'css'
-    },
-
-    path: common_roadmap_path
-})
-
-
 
 
 
