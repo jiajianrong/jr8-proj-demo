@@ -176,7 +176,7 @@ common_roadmap_path = common_roadmap_path.concat([
         isViews: true
     }
 
-])//.concat(fis.config.get('roadmap.path', []))
+])
     
 
 
