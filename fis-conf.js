@@ -14,7 +14,7 @@
  * 
  * step 2
  * 编译给Javaer
- * jr8 release -comd ../ publish
+ * jr8 release -comd ../out-your-path publish
  * 
  * 
  * 其他
@@ -22,7 +22,7 @@
  * 2016-02-16
  * 新加性能监控功能
  * jr8 release -cw performance
- * jr8 release -comd ../ publish performance
+ * jr8 release -comd ../out-your-path publish performance
  * 
  * 2016-03-09
  * 整理jr8及插件:
