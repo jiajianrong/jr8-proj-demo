@@ -14,7 +14,7 @@
  * 
  * step 2
  * 编译给Javaer
- * jr8 release -comd ../out-your-path publish
+ * jr8 release -comd ../ publish
  * 
  * 
  * 其他
@@ -22,7 +22,7 @@
  * 2016-02-16
  * 新加性能监控功能
  * jr8 release -cw performance
- * jr8 release -comd ../out-your-path publish performance
+ * jr8 release -comd ../ publish performance
  * 
  * 2016-03-09
  * 整理jr8及插件:
@@ -124,8 +124,8 @@ common_roadmap_path = common_roadmap_path.concat([
     /* 所有其他static静态资源 */
     {
         reg: /^\/static\/(.*)/i,
-        url: '/crm-m/static/$1',
-        release: '/resources/crm-m/static/$1'
+        url: '/resources/static/$1',
+        release: '/resources/static/$1'
     },
     
     /*********************************
@@ -135,14 +135,14 @@ common_roadmap_path = common_roadmap_path.concat([
     // 务必保证次序
     {
         reg: /^\/(page|widget)\/(.+)\.vm$/i,
-        release: '/views/crm-m/$1/$2.html',
+        release: '/views/$1/$2.html',
         isViews: true
     },
 
     {
         reg: /^\/(page|widget)\/(.+)$/i,
-        url: '/crm-m/static/$1/$2',
-        release: '/resources/crm-m/static/$1/$2'
+        url: '/resources/static/$1/$2',
+        release: '/resources/static/$1/$2'
     }
     
 ])
@@ -219,7 +219,7 @@ fis.config.merge({
     // --------------------------------
     deploy: {
         publish: {
-            to: '../output-111'
+            to: '../'
         }
     },
     
