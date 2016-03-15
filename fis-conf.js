@@ -124,8 +124,8 @@ common_roadmap_path = common_roadmap_path.concat([
     /* 所有其他static静态资源 */
     {
         reg: /^\/static\/(.*)/i,
-        url: '/resources/static/$1',
-        release: '/resources/static/$1'
+        url: '/crm-m/static/$1',
+        release: '/resources/crm-m/static/$1'
     },
     
     /*********************************
@@ -135,14 +135,14 @@ common_roadmap_path = common_roadmap_path.concat([
     // 务必保证次序
     {
         reg: /^\/(page|widget)\/(.+)\.vm$/i,
-        release: '/views/$1/$2.html',
+        release: '/views/crm-m/$1/$2.html',
         isViews: true
     },
 
     {
         reg: /^\/(page|widget)\/(.+)$/i,
-        url: '/resources/static/$1/$2',
-        release: '/resources/static/$1/$2'
+        url: '/crm-m/static/$1/$2',
+        release: '/resources/crm-m/static/$1/$2'
     }
     
 ])
@@ -219,7 +219,7 @@ fis.config.merge({
     // --------------------------------
     deploy: {
         publish: {
-            to: '../'
+            to: '../output-111'
         }
     },
     
