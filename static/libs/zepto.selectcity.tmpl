@@ -1,0 +1,53 @@
+<div class="selectcity-modal">
+	<div class="sc-contain">
+		<div class="sc-top-banner">
+			<a href="javascript:;" class="sc-top-back"></a>
+			选择城市
+		</div>
+		<div class="sc-aside">
+			<ul class="sc-aside-list">
+				<% for( var k = 0, objlist = obj.list, len = objlist.length; k < len; k++){ %>
+				<% if (objlist[k].value === 'key'){ %>
+				<a href="javascript:;" class="sc-aside-key" data-schash="<%= objlist[k].hash %>"><%= objlist[k].label %></a>
+				<% } %>
+				<% } %>
+			</ul>
+		</div>
+		<div class="sc-bottom-banner">
+			<div class="sc-bottom-list">
+				已选择城市:<span class="sc-city-name"><%= !!obj.checkedVal ? obj.checkedVal.split(',').length : '不限'%></span>
+			</div>
+			<a href="javascript:;" class="sc-city-keep">确认保存</a>
+		</div>
+		<div class="sc-city-list">
+			<ul>
+				<% if(!obj.checkedVal) {%>
+				<a href="javascript:;" class="sl-limit sl-limit-selected">不限</a>
+				<% } else {%>
+				<a href="javascript:;" class="sl-limit">不限</a>
+				<% }%>
+				<% for( var i = 0, checkedVal = obj.checkedVal, len = objlist.length; i < len; i++){ %>
+
+				<% if(objlist[i].value === 'key') { %>
+				<a href="javascript:;" class="sl-key" id="<%= objlist[i].hash %>"><%= objlist[i].label %></a>
+
+				<% }else if( objlist[i+1] && objlist[i+1].value === 'key' ){ %>
+					<% if(!!checkedVal && ("," + checkedVal + ",").indexOf("," + objlist[i].value + ",") != -1) {%>
+					<a href="javascript:;" class="sl-item sl-item-selected" data-sc-value="<%= objlist[i].value %>"><%= objlist[i].label %></a>
+					<% } else { %>
+					<a href="javascript:;" class="sl-item" data-sc-value="<%= objlist[i].value %>"><%= objlist[i].label %></a>
+					<% } %>
+
+				<% } else { %>
+					<% if(!!checkedVal && ("," + checkedVal + ",").indexOf("," + objlist[i].value + ",") != -1) { %>
+					<a href="javascript:;" class="sl-item sl-border sl-item-selected" data-sc-value="<%= objlist[i].value %>"><%= objlist[i].label %></a>
+					<% } else { %>
+					<a href="javascript:;" class="sl-item sl-border" data-sc-value="<%= objlist[i].value %>"><%= objlist[i].label %></a>
+					<% } %>
+				<% } %>
+
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</div>
