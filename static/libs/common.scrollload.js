@@ -37,12 +37,28 @@ define( 'libs/common.scrollload', function(require, exports, module){
     
     
     var $ = require('zepto'),
+        throttle = require('libs/common.throttle'),
         loading = false,
         buffer = 30,
         $win = $(window),
         $doc = $(document),
         winHeight = $win.height(),
         running = false,
+        
+        // 判断是否到底
+        check = function() {
+            var scrollHeight = $win.scrollTop(),
+                bodyHeight = $doc.height();
+            
+            if (loading) {
+                return; 
+            }
+            
+            if (winHeight + scrollHeight + buffer > bodyHeight) {
+                loading = true; 
+                $win.trigger('sl:loading');
+            }
+        },
         
         kickoff = function(settings) {
             
@@ -56,22 +72,7 @@ define( 'libs/common.scrollload', function(require, exports, module){
             
             buffer = settings.buffer || buffer;
             
-            
-            $win.on('scroll.scrollload', function() {
-                var scrollHeight = $win.scrollTop(),
-                    bodyHeight = $doc.height();
-                
-                if (loading) {
-                    return; 
-                }
-                
-                if (winHeight + scrollHeight + buffer > bodyHeight) {
-                    loading = true; 
-                    $win.trigger('sl:loading');
-                }
-            });
-            
-            
+            $win.on('scroll.scrollload', throttle( check, 200 ));
             
             $win.on('sl:loadingfinished.scrollload', function(e){
                 loading = false;

@@ -71,11 +71,15 @@
         </div>
         <div class="loan-item flex-box">
             <div>类型(元)</div>
-            <input class="col-1" type="number" value="$!{financeAmount}" name="financeAmount" />
+            <div class="col-1">
+                <input type="number" value="$!{financeAmount}" name="financeAmount" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型(%)</div>
-            <input class="col-1" type="number" value="$!{firstPayRatio}" name="firstPayRatio" />
+            <div class="col-1">
+                <input type="number" value="$!{firstPayRatio}" name="firstPayRatio" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
@@ -94,7 +98,9 @@
         </div>
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
-            <input class="col-1 region-related" type="text" value="$!{indicator}" name="indicator" />
+            <div class="col-1">
+                <input class="region-related" type="text" value="$!{indicator}" name="indicator" />
+            </div>
         </div>
         
 
@@ -103,32 +109,47 @@
 
         <div class="loan-item flex-box">
             <div>类型(元)</div>
-            <input class="col-1" type="number" value="$!{carDealPrice}" name="carDealPrice" />
+            <div class="col-1">
+                <input type="number" value="$!{carDealPrice}" name="carDealPrice" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" value="$!{models}" name="models" />
+            <div class="col-1">
+                <input type="text" value="$!{models}" name="models" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
+            <div class="col-1">
+                
+            </div>
             <input class="col-1" type="text" value="$!{frameNo}" name="frameNo" 
                 data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' />
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text"  value="$!{brand}" name="brand" />
+            <div class="col-1">
+                <input type="text"  value="$!{brand}" name="brand" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
-            <input class="col-1" type="text" id="cardNo" value="$!{cardNo}" name="cardNo"  />
+            <div class="col-1">                
+                <input type="text" id="cardNo" value="$!{cardNo}" name="cardNo"  />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" value="$!{color}" name="color" />
+            <div class="col-1">  
+                <input type="text" value="$!{color}" name="color" /> 
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" value="$!{firstCardDate}" name="firstCardDate" />
+            <div class="col-1">
+                <input class="col-1" type="text" value="$!{firstCardDate}" name="firstCardDate" />
+            </div>
         </div>
         
         
@@ -137,15 +158,21 @@
         
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" value="$!{dealerName}" name="dealerName" />
+            <div class="col-1">
+                <input type="text" value="$!{dealerName}" name="dealerName" />
+            </div> 
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" value="$!{idCard}" name="idCard" id="idCard" />
+            <div class="col-1">
+                <input type="text" value="$!{idCard}" name="idCard" id="idCard" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="number" value="$!{dealerBankCardNo}" name="dealerBankCardNo" />
+            <div class="col-1">
+                <input type="number" value="$!{dealerBankCardNo}" name="dealerBankCardNo" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
@@ -156,15 +183,21 @@
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" name="dealerOpenPartBank" value="$!{dealerOpenPartBank}" />
+            <div class="col-1">
+                <input type="text" name="dealerOpenPartBank" value="$!{dealerOpenPartBank}" />                
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text" name="dealerOpenBranchBank" value="$!{dealerOpenBranchBank}" />
+            <div class="col-1">
+                <input type="text" name="dealerOpenBranchBank" value="$!{dealerOpenBranchBank}" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>邮箱(非必填)</div>
-            <input class="col-1" type="text" name="mail" value="$!{mail}" />
+            <div class="col-1">
+                <input class="col-1" type="text" name="mail" value="$!{mail}" />                
+            </div>
         </div>
 
         
@@ -173,15 +206,21 @@
         
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text"  value="$!{repayAccount}" name="repayAccount" />
+            <div class="col-1">
+                <input type="text"  value="$!{repayAccount}" name="repayAccount" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="text"  value="$!{repayIdCardNo}" name="repayIdCardNo" />
+            <div class="col-1">
+                <input type="text"  value="$!{repayIdCardNo}" name="repayIdCardNo" />
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <input class="col-1" type="number" value="$!{repayBankCardNo}" name="repayBankCardNo" />
+            <div class="col-1">
+                <input type="number" value="$!{repayBankCardNo}" name="repayBankCardNo" />            
+            </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
@@ -192,8 +231,61 @@
         </div>
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
-            <input class="col-1" type="number" name="reservedPhone" value="$!{reservedPhone}"/>
+            <div class="col-1">
+                <input type="number" name="reservedPhone" value="$!{reservedPhone}"/>   
+            </div>
         </div>
+
+
+        <div class="divider"></div>
+        
+
+        <div class="loan-item flex-box">
+            <div>类型</div>
+            <div class="fm-checkbox">
+                <input type="radio" name="sex" value="1">
+                <span class="fm-icon-checkbox"></span>
+                <span class="fm-content">男生</span>
+            </div>
+            <div class="fm-checkbox">
+                <input type="radio" name="sex" value="2">
+                <span class="fm-icon-checkbox"></span>
+                <span class="fm-content">女生</span>
+            </div>
+        </div>
+
+
+        <div class="divider"></div>
+
+        <div class="fm-list-checkbox">
+            <div class="loan-item flex-box">
+                <div class="fm-checkbox">
+                    <span class="fm-content-left">类型</span>
+                    <input type="radio" name="age" value="1">
+                    <span class="fm-icon-checkbox"></span>
+                    <span class="fm-content">20</span>
+                </div>
+            </div>
+
+            <div class="loan-item flex-box">
+                <div class="fm-checkbox">
+                    <span class="fm-content-left">类型</span>
+                    <input type="radio" name="age" value="2">
+                    <span class="fm-icon-checkbox"></span>
+                    <span class="fm-content">30</span>
+                </div>
+            </div>
+
+            <div class="loan-item flex-box">
+                <div class="fm-checkbox">
+                    <span class="fm-content-left">类型</span>
+                    <input type="radio" name="age" value="3">
+                    <span class="fm-icon-checkbox"></span>
+                    <span class="fm-content">50</span>
+                </div>
+            </div>
+        </div>      
+        
 
         <section class="actions">
             <button type="button" class="btn-next-step">下一步</button>

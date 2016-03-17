@@ -54,7 +54,7 @@ define("demo/scrollload-two/scrollload-two", function(require, exports, module) 
         // 初始化加载
         (function() {
             s1.init({
-                url: '/demo/scrollload-two/list/data1',
+                url: '/demo/scrollload/list/data',
                 rows: 20,
                 onSuccess: function(obj) {
                     onSuccess(obj, s1, $('#list-wrap1'), tplFnA);
@@ -63,7 +63,7 @@ define("demo/scrollload-two/scrollload-two", function(require, exports, module) 
             s1.start();
 
             s2.init({
-                url: '/demo/scrollload-two/list/data2',
+                url: '/demo/scrollload/list/data',
                 rows: 20,
                 onSuccess: function(obj) {
                     onSuccess(obj, s2, $('#list-wrap2'), tplFnB)

@@ -13,7 +13,16 @@
 .col-1 {
     -webkit-box-flex: 1;
     box-flex: 1;
-    width:0%;
+    position: relative;
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        border: 1px solid #ccc;
+        width: 100%;
+        left: 0;
+        top: 22px;
+    }
 }
 
 // 进度条 (目前只支持两种状态， step1 & step2)
@@ -89,6 +98,19 @@
 @include progressBar(20px);
 
 
+//icon-checkbox  CSS实现
+@mixin icon-checkbox($border-color: #fff) {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 4px;
+    top: 5px;
+    left: 4px;
+    transform: rotate(-45deg);
+    border-left: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+}
+
 
 
 .loan-application {
@@ -96,22 +118,17 @@
     font-size: 16px;
 
     .loan-item {
-        height: 30px;
-        padding-top: 20px;
+        padding: 18px 10px;
         div:first-child {
-            //width: 130px;
             margin-right:20px;
-            line-height: 20px;
-            padding: 5px 0px;
         }
         input {
             width: 100%;
-            line-height: 30px;
+            padding-bottom: 3px;
             display: block;
             border-color: #cccccc;
             -webkit-appearance: none;
             border-width: 0px;
-            border-bottom: 1px solid #cccccc;
             border-radius: 0px;
             &:focus {
                 border-width: 0px;
@@ -153,6 +170,55 @@
     }
     section {
         padding: 0px 10px;
+    }
+
+    .fm-checkbox {
+        position: relative;
+        margin-right: 25px;
+        z-index: 1;
+        input {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            outline: none;
+            z-index: 2;
+        }
+        input:checked + .fm-icon-checkbox {
+            border-color: #ccc;
+            background-color: #008ef2;
+        }
+        input:checked + .fm-icon-checkbox + .fm-content {
+            color: #008ef2;
+        }
+        .fm-icon-checkbox {
+            display: inline-block;
+            position: relative;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+        .fm-icon-checkbox:after {
+            @include icon-checkbox;
+        }
+        .fm-content {
+            position: relative;
+            top: -2px;
+            left: 3px;
+        }
+    }
+
+    .fm-list-checkbox {
+        .fm-checkbox {
+            width: 95%;
+            padding: 10px 0;
+            border: 1px dotted #333;
+        }
+        .fm-content-left {
+            margin-right: 260px;
+        }
     }
 }
 

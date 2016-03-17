@@ -35,7 +35,7 @@ define("demo/scrollload-one/scrollload-one", function(require, exports, module){
         // 初始化加载
         (function() {
             sl.init({
-                url: '/market/customer/list/data',
+                url: '/demo/scrollload/list/data',
                 rows: 20,
                 onSuccess: onSuccess
             });
@@ -49,7 +49,7 @@ define("demo/scrollload-one/scrollload-one", function(require, exports, module){
             $('#list-wrap').empty();
             
             sl.reinit({
-                url: '/market/customer/list/data',
+                url: '/demo/scrollload/list/data',
                 rows: 20,
                 username: 'usususus',
                 onSuccess: onSuccess
@@ -64,7 +64,7 @@ define("demo/scrollload-one/scrollload-one", function(require, exports, module){
             $('#list-wrap').empty();
             
             sl.reinit({
-                url: '/market/customer/list/data',
+                url: '/demo/scrollload/list/data',
                 rows: 20,
                 status: 'susususususu',
                 onSuccess: onSuccess
