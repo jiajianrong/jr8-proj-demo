@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	#set($title = "demo-selectcity")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./selectcity.scss">
+</head>
+<body>
+
+	<div class="selectCityWrap">
+		<label for="customerCity">城市</label>
+			<div class="select" name="city" data-title="请选择城市">
+				<span class="cities" data-default="">不限</span>
+			</div>
+		
+	</div>
+
+	##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/selectcity/selectcity'],function(app){
+        app();
+    });
+    </script>
+
+</body>
+</html>

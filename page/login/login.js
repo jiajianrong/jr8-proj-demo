@@ -21,6 +21,12 @@ define("page/login/login", function(require, exports, module){
             // 表单提交验证
             if ( $username.val()=='' || $password.val()=='' ) {
                 $.info({message:"请输入用户名和密码"});
+                // 异步测试 2016-03-22 jiajianrong
+                /*
+                require.async('libs/zepto.info', function(){
+                    $.info({message:"请输入用户名和密码"});
+                });
+                */
                 return false;
             }
             
