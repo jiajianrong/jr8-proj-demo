@@ -9,6 +9,8 @@ define("demo/form-validate-one/form-validate-one", function(require, exports, mo
         require('libs/zepto.form');
         
         $(".btn-validate", $form).on("click",function(e){
+            
+            
             var result = $form.form('validate');
 
             if ( !result.isValid ) {

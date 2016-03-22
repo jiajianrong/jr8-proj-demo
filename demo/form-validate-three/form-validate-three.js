@@ -11,6 +11,8 @@ define("demo/form-validate-three/form-validate-three", function(require, exports
         
         
         $(".btn-validate", $form).on("click",function(e){
+            
+            
             var result = $form.form('validate', [{
                 errmsg: "不允许为空",
                 name: "UserName",

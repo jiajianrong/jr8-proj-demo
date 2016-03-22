@@ -18,7 +18,7 @@
         <div class="validate">
             <span>身份证号:</span>
             <input type="text" name="CardNum"  placeholder = "通过dom-regexp校验" autocomplete = "on"
-            data-validate='{"errmsg":"身份证不正确","regexp":"/(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)/"}' />
+            data-validate='{"errmsg":"身份证不正确","regexp":"(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)"}' />
         </div>
 
         <div class="validate">

@@ -9,6 +9,8 @@ define("demo/form-validate-two/form-validate-two", function(require, exports, mo
         require('libs/zepto.form');
         
         $(".btn-validate", $form).on("click",function(e){
+            
+            
             var result = $form.form('validate', [{
                 errmsg: "不允许为空",
                 name: "UserName",
@@ -17,7 +19,7 @@ define("demo/form-validate-two/form-validate-two", function(require, exports, mo
             },{
                 errmsg: "身份证不正确",
                 name: "CardNum",
-                regexp: "/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/"
+                regexp: "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)"
             },{
                 errmsg: '请输入正确的手机号',
                 name: "PhoneNum",
