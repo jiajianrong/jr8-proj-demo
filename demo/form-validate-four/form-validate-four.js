@@ -1,4 +1,4 @@
-define("demo/form-validate-three/form-validate-three", function(require, exports, module){
+define("demo/form-validate-four/form-validate-four", function(require, exports, module){
 
     module.exports = function(opt) {
         
@@ -6,14 +6,13 @@ define("demo/form-validate-three/form-validate-three", function(require, exports
             $form = $("#form");
             
         require('libs/zepto.info');
-        require('libs/zepto.form');
-        //require('libs/zepto.form.errmsg');
+        require('libs/zepto.vform');
         
         
         $form.find(".btn-validate").on("click",function(e){
             
             
-            var result = $form.form('validate', [{
+            $form.vform('validate', [{
                     errmsg: "不允许为空",
                     name: "UserName",
                     rule:"isNonEmpty"
@@ -35,15 +34,9 @@ define("demo/form-validate-three/form-validate-three", function(require, exports
             ]);
             
             
-            $form.form('onvalidate', {
+            $form.vform('onvalidate', {
                 success: function(){
                     $.info("验证通过");
-                },
-                error: function(messages){
-                    for(var key in messages) { // key ==> value
-                        var msg = messages[key];
-                        $form.find('[name='+ key +']').parent().find('[data-err]').html(msg);
-                    }
                 }
             });
             

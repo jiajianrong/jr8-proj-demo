@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-validate-form")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./form-validate-four.scss">
+</head>
+<body>
+
+<form id="form">
+        <div class="validate">
+            <label>姓名:</label>
+            <input type="text" name="UserName" placeholder = "非空，通过js-rule校验" autocomplete = "on"/>
+            <div class="err"><span class="msgErr" data-err>&nbsp;</span></div>
+        </div>
+
+        <div class="validate">
+            <label>身份证号:</label>
+            <input type="text" name="CardNum" placeholder = "通过js-regexp校验" autocomplete = "on"/>
+            <div class="err"><span class="msgErr" data-err>&nbsp;</span></div>
+        </div>
+
+        <div class="validate">
+            <label>手机号:</label>
+            <input type="text" name="PhoneNum" placeholder = "非空，通过js-vfunc校验" autocomplete = "on"/>
+            <div class="err"><span class="msgErr" data-err>&nbsp;</span></div>
+        </div>
+        <section class="actions">
+            <button type="button" class="btn-validate">验证</button>
+        </section>        
+</form>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/form-validate-four/form-validate-four'],function(app){
+        app();
+    });
+    </script>
+        
+</body>
+</html>
