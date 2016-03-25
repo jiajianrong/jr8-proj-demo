@@ -1,6 +1,7 @@
 .widget-date-wrap-default {
     position: absolute;
     margin-bottom: 40px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     left: 20px;
     right: 20px;
     opacity: 0.98;
@@ -22,7 +23,15 @@
         text-align: center;
         background-color: #efefef;
         border-bottom: 1px solid #dfdfdf;
-        
+	
+	// 2016-03-25 liuliang support year select
+        select{
+            border:0px;
+            background-color: transparent;
+            margin-right: 5px;
+            -webkit-appearance: none;
+        }
+	
         &>span {
             display: block;
             line-height: 36px;
