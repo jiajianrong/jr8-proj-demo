@@ -1,3 +1,11 @@
+/**
+ * @require /static/scss/zepto.dialog.scss
+ * 
+ * @authors fuhebo@58ganji.com
+ * 
+ */
+
+
 define('libs/zepto.dialog', function(require, exports, module) {
 
     var $ = require('zepto');

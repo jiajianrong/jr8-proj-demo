@@ -1,4 +1,6 @@
 /**
+ * @require /static/scss/zepto.selectcity.scss
+ * 
  * @authors MXR
  * @date    2016-02-28
  * 

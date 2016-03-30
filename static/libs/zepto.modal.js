@@ -1,4 +1,6 @@
 /**
+ * @require /static/scss/zepto.modal.scss
+ * 
  * @authors jiajianrong@58.com
  * @date    2015-12-19
  * 

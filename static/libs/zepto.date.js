@@ -1,4 +1,6 @@
 /**
+ * @require /static/scss/zepto.date.scss
+ * 
  * @authors jiajianrong@58.com
  * @date    2015-01-22
  * 使用
