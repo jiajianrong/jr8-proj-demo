@@ -80,13 +80,6 @@ var common_roadmap_path = [
         release: false,
         isJsLike: true,
         useOptimizer: false
-    },
-    
-    /* 废弃 */
-    {
-        reg: /^\/static\/decraped\/.*/i,
-        release: false,
-        useMap: false
     }
 ];
 
