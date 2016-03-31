@@ -135,7 +135,7 @@ common_roadmap_path = common_roadmap_path.concat([
     // 务必保证次序
     {
         reg: /^\/(page|widget)\/(.+)\.vm$/i,
-        release: '/views/$1/$2.html',
+        release: '/views/$1/$2',
         isViews: true
     },
 
@@ -172,8 +172,15 @@ common_roadmap_path = common_roadmap_path.concat([
 
     {
         reg: /^\/(page|widget|demo)\/(.+)\.vm$/i,
-        release: '/WEB-INF/views/$1/$2.vm',
+        release: '/WEB-INF/views/$1/$2',
+        useCache: false,  // 2016-03-31 临时关闭cache保证deploy dep
         isViews: true
+    },
+    
+    {
+        reg: /^\/(page|widget)\/(.+)\.(scss)$/i,
+        release: '/static/$1/$2',
+        useCache: false  // 2016-03-31 临时关闭cache保证deploy dep
     }
 
 ])
