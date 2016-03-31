@@ -6,7 +6,7 @@ define("page/login/login", function(require, exports, module){
         
         var $ = require('zepto');
         require('libs/zepto.info');
-        //require('libs/zepto.date');
+        //require.async('libs/zepto.date');
         //require('libs/zepto.selectcity');
         
         
