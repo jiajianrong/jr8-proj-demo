@@ -79,6 +79,14 @@ define("page/wddx-form-loan-apply/wddx-form-loan-apply", function(require, expor
                     errmsg: "社保",
                     name: 'shebao',
                     rule: 'mustSelect'
+                },{
+                    errmsg: "是否有房",
+                    name: 'hashouse',
+                    rule: 'mustSelect'
+                },{
+                    errmsg: "是否有车",
+                    name: 'hascar',
+                    rule: 'mustSelect'
                 }
             ]);
             

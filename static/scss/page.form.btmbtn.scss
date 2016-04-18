@@ -28,8 +28,6 @@
  */
 .ui-form-btmbtn {
     
-    
-    
     position: fixed;
     bottom: 0;
     left: 0;
@@ -45,7 +43,7 @@
     }
     
     .btn-wrap {
-        background-color: $bgBody;
+        background-color: #fff;
         padding: rem(16px) rem(36px);
         
         .btn-submit {

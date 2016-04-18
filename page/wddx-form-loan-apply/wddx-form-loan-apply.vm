@@ -72,6 +72,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label>出生年份</label>
+                <div class="form-con">
+                    <input type="number" name="chushengnian" placeholder="例如：1980" class="form-input" maxlength="4">
+                </div>
+            </div>
+            <div class="form-group">
                 <label>手机号</label>
                 <div class="form-con">
                     <input type="tel" name="phone" placeholder="请输入" class="form-input" value="$!{phone}" readonly="true">
@@ -82,12 +88,6 @@
                 <div class="form-con">
                     <input type="hidden" name="applyCity">
                     <div class="form-input select-city-single">请选择</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>出生年份</label>
-                <div class="form-con">
-                    <input type="number" name="chushengnian" placeholder="请输入" class="form-input" maxlength="4">
                 </div>
             </div>
         </fieldset>
@@ -185,6 +185,40 @@
                         </div>
                         <div class="form-cb-item">
                             <input type="radio" name="shebao" value="无">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">无</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>是否有房</label>
+                <div class="form-con">
+                    <div class="form-cb-wrap">
+                        <div class="form-cb-item">
+                            <input type="radio" name="hashouse" value="有">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">有</span>
+                        </div>
+                        <div class="form-cb-item">
+                            <input type="radio" name="hashouse" value="无">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">无</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>是否有车</label>
+                <div class="form-con">
+                    <div class="form-cb-wrap">
+                        <div class="form-cb-item">
+                            <input type="radio" name="hascar" value="有">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">有</span>
+                        </div>
+                        <div class="form-cb-item">
+                            <input type="radio" name="hascar" value="无">
                             <span class="form-cb-item-icon"></span>
                             <span class="form-cb-item-label">无</span>
                         </div>
