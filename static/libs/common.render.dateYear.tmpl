@@ -1,22 +1,22 @@
-<div data-v='<%=obj.baseTime%>' class='widget-date' data-date>
-    <div class='widget-date-head'>
-        <a data-date-prev class='widget-date-prev <%=obj.disablePrev%>' href='javascript:;'></a>
+<div data-v='<%=obj.baseTime%>' class='wi-date' data-date>
+    <div class='wi-date-head'>
+        <a data-date-prev class='wi-date-prev <%=obj.disablePrev%>' href='javascript:;'></a>
         <span>
-        	<select class="widget-year-change">
+        	<select>
         		<%for(var j=obj.yStart;j<=obj.yEnd;j++){%>
 					<option <%if(j==obj.thisYear){%>selected<%}%>  value="<%= j %>"><%= j %></option>
         		<%}%>
         	</select>
         	年
-        	<select class="widget-month-change">
+        	<select>
         		<%for(var i=1;i<=12;i++){%>
 					<option <%if(i==obj.thisMonth){%>selected<%}%> value="<%= i %>"><%= i %></option>
         		<%}%>
         	</select>
         	月
         </span>
-        <a data-date-next class='widget-date-next <%=obj.disableNext%>' href='javascript:;'></a>
+        <a data-date-next class='wi-date-next <%=obj.disableNext%>' href='javascript:;'></a>
     </div>
-    <ul class='widget-date-week'><%=obj.baseWeek%></ul>
-    <div class='widget-date-day'><%=obj.baseContent%></div>
+    <ul class='wi-date-week'><%=obj.baseWeek%></ul>
+    <div class='wi-date-day'><%=obj.baseContent%></div>
 </div>

@@ -7,7 +7,6 @@ define("demo/form-validate-three/form-validate-three", function(require, exports
             
         require('libs/zepto.info');
         require('libs/zepto.form');
-        //require('libs/zepto.form.errmsg');
         
         
         $form.find(".btn-validate").on("click",function(e){

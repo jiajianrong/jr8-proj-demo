@@ -2,7 +2,7 @@
  * @require /static/scss/zepto.info.scss
  * 
  * @authors jiajianrong@58.com
- * @date    2015-12-04
+ * @date    2015-12-04    2016-04-18
  * 
  * demo
  * $.info({ message:"请输入用户名和密码" });
@@ -27,8 +27,6 @@ define( 'libs/zepto.info', function(require, exports, module){
         
         // 插件
         $.info = function(opts) {
-            opts = (typeof opts === 'string') ? { message: opts } : opts;
-            
             var info = new Info(opts);
             info.start();
         };
@@ -36,8 +34,19 @@ define( 'libs/zepto.info', function(require, exports, module){
         
         // 类
         function Info(opts) {
+            
+            opts = (typeof opts === 'string') ? { message: opts } : opts;
+            
+            $.extend(opts, {
+                '$cont': $( tplFn(opts) ),
+                isTouchDestroy: true
+            });
+                
             this.opts = opts;
         }
+        
+        
+        
         
         Info.prototype = {
             
@@ -46,16 +55,8 @@ define( 'libs/zepto.info', function(require, exports, module){
             },
             
             start: function(){
-                
-                var opts = $.extend( {
-                    '$cont': $( tplFn({message: this.opts.message}) ),
-                    isTouchDestroy: true
-                }, this.opts);
-                
-                this.modal = $.modal(opts);
-                
+                this.modal = $.modal(this.opts);
                 this.modal.show();
-                
             }
         };
         

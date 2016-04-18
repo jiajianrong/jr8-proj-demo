@@ -8,10 +8,14 @@ define("demo/dialog/dialog", function(require, exports, module) {
 		$('.info-wrap').on('click', '.dialog-confirm', function(e) {
 			$.dialog({
 				type: "confirm",
-				title: "提示",
-				message: "sssqwqwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwqwqwwwwwwwww",
-				onConfirm: function() {
-					alert("www");
+				btnDblOk:"双选确定",
+				btnDblCanl:"双选取消",
+				message: "<div style = 'text-align:left;'>swwwwwsssqwqwqwqwwwwwwwwwsssssqwqwqwqwwwwwwwwwsssqwq</div>",
+				onOk: function() {
+					alert("doubleOk");
+				},
+				onCancel:function(){
+					alert("cancel");
 				}
 			});
 		})
@@ -19,16 +23,11 @@ define("demo/dialog/dialog", function(require, exports, module) {
 		$('.info-wrap').on('click', '.dialog-alert', function(e) {
 			$.dialog({
 				type: "alert",
-				title: "alert",
-				message: "sssqwqwssswwssqwqwqwq"
-			});
-		})
-
-		$('.info-wrap').on('click', '.dialog-custom', function(e) {
-			$.dialog({
-				type: "custom",
-				title: "custom",
-				message: "sssqwqwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwsssqwqwqwqwwwwwwwwwqwqwwwwwwwww"
+				btnSing: "我知道了",
+				message: "sssqwqwssswwssqwqwqwq",
+				onOk:function(){
+					alert("singelOk")
+				}
 			});
 		})
 	}

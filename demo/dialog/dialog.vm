@@ -9,7 +9,6 @@
 <section class="info-wrap" id="component-page">
     <div class = "dialog-alert">alert</div>
     <div class = "dialog-confirm">confirm</div>
-    <div class = "dialog-custom">custom</div>
 </section>
 
     ##------------------------------------

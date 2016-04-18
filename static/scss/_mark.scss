@@ -1,5 +1,8 @@
-@mixin mark-back($backgroundColor: #CCCCCC, $width: 11px, $rotate:120deg) {
-    display: block;
+@import "/static/scss/_rem";
+
+
+
+@mixin mark-back($backgroundColor: #CCCCCC, $width: rem(22px), $rotate:120deg) {
     position: relative;
     
     &::after,
@@ -13,7 +16,7 @@
         top: 50%;
         left: 50%;
         margin-top: -1px;
-        margin-left: -12px;
+        margin-left: rem(-24px);
     }
     &::after {
         -webkit-transform: rotate($rotate);
@@ -26,29 +29,58 @@
 }
 
 
+//
+//.mark-forward {
+//  position: relative;
+//}
+//.mark-forward::after,
+//.mark-forward::before {
+//  content: "";
+//  position: absolute;
+//  display: inline-block;
+//  width: rem(22px);
+//  height: 2px;
+//  background: #CCCCCC;
+//  top: 50%;
+//  left: 50%;
+//  margin-top: -1px;
+//}
+//.mark-forward::after {
+//  -webkit-transform: rotate(60deg);
+//  -webkit-transform-origin: right 90%;
+//}
+//.mark-forward::before {
+//  -webkit-transform: rotate(-60deg);
+//  -webkit-transform-origin: right 10%;
+//}
 
-.mark-forward {
-    display: block;
+
+/**
+     * 
+     * 表单选择项 -- 右箭头
+     * 
+ */
+@mixin mark-forward($backgroundColor: #CCCCCC, $width: rem(20px), $rotate:45deg, $right: rem(30px)) {
     position: relative;
+    
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: $width;
+        height: 1px;
+        background: $backgroundColor;
+        top: 50%;
+        right: $right;
+        margin-top: -1px;
+    }
+    &::after {
+        -webkit-transform: rotate($rotate);
+        -webkit-transform-origin: right 90%;
+    }
+    &::before {
+        -webkit-transform: rotate(-$rotate);
+        -webkit-transform-origin: right 10%;
+    }
 }
-.mark-forward::after,
-.mark-forward::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 11px;
-    height: 2px;
-    background: #CCCCCC;
-    top: 50%;
-    left: 50%;
-    margin-top: -1px;
-}
-.mark-forward::after {
-    -webkit-transform: rotate(60deg);
-    -webkit-transform-origin: right 90%;
-}
-.mark-forward::before {
-    -webkit-transform: rotate(-60deg);
-    -webkit-transform-origin: right 10%;
-}
-

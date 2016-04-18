@@ -54,7 +54,6 @@
 <body>
     #set($title = "放款申请")
     #set($backHref = "/market/customer/detail?userId=$!{userId}")
-    #parse('/widget/navbar/navbar.vm')
 
 
 

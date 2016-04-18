@@ -15,6 +15,8 @@
  * step 2
  * 编译给Javaer
  * jr8 release -comd ../out-your-path publish
+ * 或者
+ * jr8 release -comd publish
  * 
  * 
  * 其他
@@ -70,7 +72,7 @@ var common_roadmap_path = [
         
     /* 配置文件 */
     {
-        reg: /^\/fis-conf-.+$/i,
+        reg: /^\/(fis-conf-.+|README.*)$/i,
         release: false
     },
     
@@ -219,7 +221,7 @@ fis.config.merge({
     // --------------------------------
     deploy: {
         publish: {
-            to: '../output-111'
+            to: '../output_'+(+new Date())
         }
     },
     
@@ -230,7 +232,7 @@ fis.config.merge({
     settings: {
         postpackager: {
             'performance-framework': {
-                urlPrefix: 'http://1.1.1.1:1111/saveTime?project=projName'
+                urlPrefix: 'http://10.48.210.28:3000/saveTime?project=daoliu-wddk'
             }
         }
     }

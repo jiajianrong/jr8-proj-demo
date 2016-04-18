@@ -1,24 +1,23 @@
-.widget-date-wrap-default {
+@import "/static/scss/_rem";
+.wi-date-wrap {
     position: absolute;
-    margin-bottom: 40px;
+    margin-bottom: rem(80px);
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    left: 20px;
-    right: 20px;
+    left: rem(40px);
+    right: rem(40px);
     opacity: 0.98;
     background: #fff;
 }
 
 
-.widget-date {
+.wi-date {
     
     border: 1px solid #dfdfdf;
-    
-    
-    
-    .widget-date-head {
+     
+    .wi-date-head {
         
         position: relative;
-        height: 35px;
+        height: rem(70px);
         color: #222;
         text-align: center;
         background-color: #efefef;
@@ -28,38 +27,38 @@
         select{
             border:0px;
             background-color: transparent;
-            margin-right: 5px;
+            margin-right: rem(10px);
             -webkit-appearance: none;
         }
 	
         &>span {
             display: block;
-            line-height: 36px;
-            font-size: 14px;
-            margin: 0 35px;
+            line-height: rem(72px);
+            font-size: rem(28px);
+            margin: rem(0 70px);
             border-right: 1px solid #dfdfdf;
             border-left: 1px solid #dfdfdf;
         }
         
-        .widget-date-prev,
-        .widget-date-next {
+        .wi-date-prev,
+        .wi-date-next {
             display: block;
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 35px;
+            width: rem(70px);
         }
-        .widget-date-prev {
+        .wi-date-prev {
             left: 0;
         }
-        .widget-date-next {
+        .wi-date-next {
             right: 0;
         }
         
-        .widget-date-prev:before,
-        .widget-date-prev:after,
-        .widget-date-next:before,
-        .widget-date-next:after {
+        .wi-date-prev:before,
+        .wi-date-prev:after,
+        .wi-date-next:before,
+        .wi-date-next:after {
             position: absolute;
             content: " ";
             font-size: 0px;
@@ -68,33 +67,33 @@
             border-style: solid;
             height: 0;
             width: 0;
-            top: 11px;
-            border-width: 7px;
+            top: rem(22px);
+            border-width: rem(14px);
         }
         
         
-        .widget-date-prev:before {
-            left: 7px;
+        .wi-date-prev:before {
+            left: rem(14px);
             border-color: transparent #888 transparent transparent;
         }
-        .widget-date-prev:after {
-            left: 9px;
+        .wi-date-prev:after {
+            left: rem(18px);
             border-color: transparent #efefef transparent transparent;
         }
         
-        .widget-date-next:before {
-            right: 7px;
+        .wi-date-next:before {
+            right: rem(14px);
             border-color: transparent transparent transparent #888;
         }
-        .widget-date-next:after {
-            right: 9px;
+        .wi-date-next:after {
+            right: rem(18px);
             border-color: transparent transparent transparent #efefef;
         }
         
-        .widget-date-prev.disable:before {
+        .wi-date-prev.disable:before {
             border-color: transparent #d8d8d8 transparent transparent;
         }
-        .widget-date-next.disable:before {
+        .wi-date-next.disable:before {
             border-color: transparent transparent transparent #d8d8d8;
         }
 
@@ -102,30 +101,30 @@
 
 
 
-    .widget-date-week {
+    .wi-date-week {
         display: -webkit-box;
-        height: 35px;
-        font-size: 13px;
+        height: rem(70px);
+        font-size: rem(26px);
         color: #717171;
         
         li {
             -webkit-box-flex: 1;
             width: 100%;
-            line-height: 36px;
+            line-height: rem(72px);
             text-align: center;
         }
     }
     
     
     
-    .widget-date-day {
+    .wi-date-day {
         
         ul {
             display: -webkit-box;
-            height: 31px;
-            font-size: 15px;
+            height: rem(62px);
+            font-size: rem(30px);
             color: #ccc;
-            line-height: 31px;
+            line-height: rem(62px);
             border-top: 1px solid #dfdfdf;
         }
         

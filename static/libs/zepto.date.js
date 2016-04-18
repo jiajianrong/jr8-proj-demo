@@ -16,10 +16,10 @@ define( 'libs/zepto.date', function(require, exports, module){
 
 
     var $ = require('zepto'),
-        render = require('libs/common.render.dateYear'),
+        render = require('libs/common.render.date'),
         
         // 下面俩变量只定义一次
-        wrapEl = $('<div class="widget-date-wrap-default">'),
+        wrapEl = $('<div class="wi-date-wrap">'),
         registered = false,
         
         // helper

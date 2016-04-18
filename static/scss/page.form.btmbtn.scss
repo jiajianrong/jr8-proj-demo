@@ -1,0 +1,60 @@
+@import "/static/scss/_rem";
+@import "/static/scss/_variables";
+@import "/static/scss/_button";
+
+
+/**
+     * 
+     * jiajianrong
+     * 2016-04-15
+     * 
+     * 
+    
+    
+    <section class="ui-form-btmbtn">
+        <div class="info-wrap"></div>
+        <div class="btn-wrap">
+            <a href="javascript:;" class="btn-submit disabled">申请</a>
+        </div>
+    </section>
+ */
+
+
+
+
+
+/*
+ * 按钮及提示
+ */
+.ui-form-btmbtn {
+    
+    
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-height: rem(100px);
+    width: 100%;
+    z-index: 5;
+    
+    .info-wrap {
+        display: none;
+        padding: rem(20px) rem(36px);
+        background-color: rgba(0,0,0,.8);
+        color: #fff;
+    }
+    
+    .btn-wrap {
+        background-color: $bgBody;
+        padding: rem(16px) rem(36px);
+        
+        .btn-submit {
+            @include button;
+        }
+    }
+        
+    
+    
+    
+    
+}

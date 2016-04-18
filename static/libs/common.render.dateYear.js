@@ -73,18 +73,6 @@ define( 'libs/common.render.dateYear', function(require, exports, module) {
             });
             
             
-            // comment on 2016-01-23 jiajianrong
-            // 使用tmpl代替
-//          return  
-//          
-//          "<div data-v="+date.getTime()+" class='widget-date' data-date>"+
-//              "<div class='widget-date-head'>"+
-//                  "<a data-date-prev class='widget-date-prev "+ (y<=_min.getFullYear()&&M<=_min.getMonth()?"disable":"") +"' href='javascript:;'></a><span>"+
-//                  date.format("{yyyy}年{MM}月")+
-//                  "</span><a data-date-next class='widget-date-next "+ (y>=_max.getFullYear()&&M>=_max.getMonth()?"disable":"") +"' href='javascript:;'></a></div>"+
-//              "<ul class='widget-date-week'>"+res_week.join("")+"</ul>"+
-//              "<div class='widget-date-day'>"+res.join("")+"</div>"+
-//          "</div>";
         };
     })();
 

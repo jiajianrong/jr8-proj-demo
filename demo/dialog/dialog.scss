@@ -1,9 +1,11 @@
+@import "/static/scss/_rem";
 @import "/static/scss/zepto.modal";
 @import "/static/scss/zepto.dialog";
+@import "/static/scss/_mark";
 .dialog-alert{
 	border-radius:10px;
 	padding:5px;
-    width:60px;
+    width:rem(60px);
     height:40px;
     line-height:40px;
     background-color:green;
@@ -17,16 +19,6 @@
     height:40px;
     line-height:40px;
     background-color:red;
-    float:left;
-    margin-left:10px;
-}
-.dialog-custom{
-	border-radius:10px;
-	padding:5px;
-    width:60px;
-    height:40px;
-    line-height:40px;
-    background-color:blue;
     float:left;
     margin-left:10px;
 }

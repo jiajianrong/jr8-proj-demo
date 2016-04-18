@@ -2,7 +2,7 @@
  * @require /static/scss/zepto.modal.scss
  * 
  * @authors jiajianrong@58.com
- * @date    2015-12-19
+ * @date    2015-12-19   2014-04-18
  * 
  * demo
  * 
@@ -41,6 +41,8 @@ define( 'libs/zepto.modal', function(require, exports, module){
         
         this.init();
     }
+    
+    
     
     
     Modal.prototype = {
@@ -93,9 +95,7 @@ define( 'libs/zepto.modal', function(require, exports, module){
     
     
     $.modal = function(opts) {
-        
         var modal = new Modal(opts);
-        
         return modal;
     }
 

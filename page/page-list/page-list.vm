@@ -9,7 +9,6 @@
     #set($title = "列表")
     #set($menu = "filter")
     #set($logout = "/logout")
-    #parse('/widget/navbar/navbar.vm')
 
     <div class="search-bar flex-box">
         <div class="search-icon"></div>

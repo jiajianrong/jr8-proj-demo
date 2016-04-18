@@ -56,11 +56,10 @@ define( 'libs/zepto.form', function(require, exports, module){
             if ( !options || !(typeof options == 'object') )
                 return;
             
-            if ( this._result.isValid && options.success )
-                options.success.call(this);
-                
-            if ( !this._result.isValid && options.error )
-                options.error.call(this, this._result.messages);
+            if ( this._result.isValid )
+                options.success && options.success.call(this);
+            else
+                options.error && options.error.call(this, this._result.messages);
         },
         
         /**
@@ -96,7 +95,21 @@ define( 'libs/zepto.form', function(require, exports, module){
                 options = Array.prototype.slice.call( Object.prototype.toString.call(options)=="[object Array]" ? options : arguments );
                 
                 options.forEach(function(item){
-                    item.value = _$form.find( '[name='+item.name+']' ).val();
+                    var $items = _$form.find( '[name='+item.name+']' );
+                    
+                    // default to empty
+                    item.value = '';
+                    
+                    // input select
+                    if ($items.size()==1) {
+                        item.value = $items.val();
+                        
+                    // radio checkbox   
+                    } else if ($items.size()>1) {
+                        $items.forEach(function(it){
+                            if (it.checked) item.value = it.value;
+                        })
+                    }
                 });
                 
                 // now formData maybe dis-sorted

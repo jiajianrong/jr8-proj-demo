@@ -1,0 +1,194 @@
+@import "/static/scss/_rem";
+@import "/static/scss/_variables";
+@import "/static/scss/_mark";
+@import "/static/scss/_checkbox";
+
+
+/**
+     * 
+     * jiajianrong
+     * 2016-04-07
+     * 
+     * 
+    <form class="ui-form">
+        
+        <fieldset>
+        
+            <legend>贷款信息</legend>
+            
+            <div class="form-group form-mark">
+                <label>贷款金额</label>
+                <div class="form-con">
+                    <select name="loanamount" class="form-input">
+                        <option value="-1" disabled="true" selected="true">请选择</option>
+                        <option value="1">1万-10万</option>
+                        <option value="2">10万-100万</option>
+                        <option value="3">100万-1000万</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>发薪方式</label>
+                <div class="form-con">
+                    <div class="form-cb-wrap">
+                        <div class="form-cb-item">
+                            <input type="radio" name="salarytype" value="1">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">银行转账</span>
+                        </div>
+                        <div class="form-cb-item">
+                            <input type="radio" name="salarytype" value="2">
+                            <span class="form-cb-item-icon"></span>
+                            <span class="form-cb-item-label">现金领取</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </fieldset>
+        
+    </form>
+ */
+
+
+
+
+
+
+.ui-form {
+    
+    
+    
+    /*
+     * fieldset -- input集合
+     */
+    
+    fieldset {
+        border: 0;
+        font-size: rem(26px);
+        
+        legend {
+            padding: rem(30px);
+            
+            &.empty-legend {
+                padding: rem(16px);
+            }
+        }
+        
+        &:last-child {
+            margin-bottom: rem(240px);
+        }
+    }
+    
+    
+    
+    /*
+     * 每个input
+     */
+    
+    .form-group {
+        display: -webkit-box;
+        display: box;
+        padding-left: rem(30px);
+        background-color: #fff;
+        border-bottom: $lineBorder;
+        
+        &:last-child {
+            border-bottom-width: 0;
+        }
+        
+        
+        label {
+            display: -webkit-box;
+            display: box;
+            width: rem(200px);
+            font-size: rem(32px);
+            color: $fontMain;
+            -webkit-box-align: center;
+            box-align: center;
+        }
+        
+        .form-con {
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            height: rem(120px);
+            font-size: rem(32px);
+            color: $fontMain;
+            
+            /**
+             * 直接child包括 text,select. 间接child包括radio(详见form-cb-wrap)
+             */
+            >.form-input {
+                width: 90%;
+                height: 100%;
+                background-color: #fff;
+                -webkit-appearance: none;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                appearance: none;
+                outline: 0;
+                border: 0;
+            }
+        }
+    }
+    
+    
+    
+    /*
+     * input 右箭头
+     */
+    
+    .form-mark {
+        @include mark-forward;
+    }
+    
+    
+    
+    
+    
+    
+    /*
+     * input -- radio: 用css替代js逻辑和img对勾
+     */
+    
+    .form-cb-wrap {
+        display: -webkit-box;
+        display: box;
+        height: 100%;
+        
+        .form-cb-item {
+            position: relative;
+            display: -webkit-box;
+            display: box;
+            width: rem(240px);
+            -webkit-box-align: center;
+            box-align: center;
+            z-index: 1;
+            
+            input {
+                @include checkbox-input();
+            }
+            input:checked + .form-cb-item-icon {
+                background-color: $bgApp58;
+            }
+            .form-cb-item-icon {
+                @include checkbox-icon(rem(34px));
+                top: rem(6px);
+            }
+        }
+        
+    }
+    
+    
+    /*
+     * div: 用div+input.hidden代替城市选择下拉框
+     */
+    .select-city-single {
+        display: -webkit-box;
+        display: box;
+        -webkit-box-align: center;
+        box-align: center;
+    }
+
+    
+}

@@ -6,13 +6,15 @@ define("demo/form-validate-four/form-validate-four", function(require, exports, 
             $form = $("#form");
             
         require('libs/zepto.info');
-        require('libs/zepto.vform');
+        require('libs/zepto.form');
+        
+        var formErrorRender = require('libs/zepto.form.error.demorender');
         
         
         $form.find(".btn-validate").on("click",function(e){
             
             
-            $form.vform('validate', [{
+            $form.form('validate', [{
                     errmsg: "不允许为空",
                     name: "UserName",
                     rule:"isNonEmpty"
@@ -34,10 +36,11 @@ define("demo/form-validate-four/form-validate-four", function(require, exports, 
             ]);
             
             
-            $form.vform('onvalidate', {
+            $form.form('onvalidate', {
                 success: function(){
                     $.info("验证通过");
-                }
+                },
+                error: formErrorRender
             });
             
             

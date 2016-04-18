@@ -20,21 +20,9 @@
  * };
  *  var selectcity = $.selectcity({
 		data: cityList,
-		onInit: function () {
-			console.log('init');
-		},
-		onShow: function () {
-			console.log('show');
-		},
 		onMsg: function (data) {
 			console.log('msg');
 			console.log(data);
-		},
-		onHide: function () {
-			console.log('hide');
-		},
-		onDestroy: function () {
-			console.log(88);
 		}
 	});
 	selectcity.show();

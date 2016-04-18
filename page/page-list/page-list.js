@@ -113,7 +113,7 @@ define("page/page-list/page-list", function(require, exports, module){
         
         
         // 按状态筛选
-        $(document).on('click', '.modal-mask .filter-option', function(){
+        $(document).on('click', '.filter-option', function(){
 
             $(this).addClass("active").parents("section").find(".filter-option").not(this).removeClass("active");
             var statusStr = $(this).text();

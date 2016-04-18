@@ -1,0 +1,164 @@
+
+
+
+.wi-selectcity-single {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+    
+    
+    
+    
+    .sc-banner {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #fff;
+        height: .83rem;
+        line-height: .83rem;
+        text-align: center;
+        border-bottom: 1px solid #cfd6dc;
+        font-size: .25rem;
+        font-weight: bold;
+        
+        .sc-banner-back {
+            display: block;
+            position: absolute;
+            top: .23rem;
+            left: .25rem;
+            width: .21rem;
+            height: .33rem;
+            background-image: url(/static/img/icons/selectcity-banner-arrow.png?__inline);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+    
+    
+    
+    
+    .sc-aside {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: .5rem;
+        padding-top: 1rem;
+        padding-bottom: .2rem;
+        overflow: auto;
+        background-color: #f2f5f8;
+        text-align: center;
+        z-index: 9;
+        
+        .sc-aside-list {
+            height: 100%;
+            
+            .sc-aside-key, .sc-aside-top {
+                color: #97aab2;
+                display: block;
+                font-size: .183rem;
+            }
+            .sc-aside-key {
+                height: 4.5%;
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+.sc-main {
+    margin-top: .83rem;
+    
+    a {
+        display: block;
+    }
+    
+    .sc-main-item-key {
+        padding-left: .25rem;
+        background-color: #f2f5f8;
+        height: .53rem;
+        line-height: .53rem;
+        font-size: .2rem;
+        color: #757c85;
+    }
+    
+    .sc-main-item-value {
+        position: relative;
+        padding-left: .25rem;
+        background-color: #fff;
+        height: .83rem;
+        line-height: .83rem;
+        font-size: .23rem;
+        color: #404a51;
+        
+        &:after {
+            content: '';
+            position: absolute;
+            top: .31rem;
+            right: 1.3rem;
+            display: block;
+            width: .2rem;
+            height: .2rem;
+            border: 1px solid #dadada;
+        }
+    }
+    
+    .sc-main-item-value-selected {
+        color: #0099ff;
+        
+        &:after {
+            content: '';
+            position: absolute;
+            top: .31rem;
+            right: 1.3rem;
+            display: block;
+            width: .27rem;
+            height: .27rem;
+            background-image: url(/static/img/icons/selectcity-check.png?__inline);
+            background-repeat: no-repeat;
+            background-size: contain;
+            border: 0;
+        }
+    }
+    .sc-main-item-border {
+        border-bottom: .016rem solid #f2f5f8;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+

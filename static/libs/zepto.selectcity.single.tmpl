@@ -1,0 +1,35 @@
+<div class="wi-selectcity-single">
+    
+    
+    <div class="sc-banner">
+        <a href="javascript:;" class="sc-banner-back"></a>选择城市
+    </div>
+    
+    
+    <div class="sc-aside">
+        <ul class="sc-aside-list">
+        <% for( var k = 0, objlist = obj.list; k < objlist.length; k++){ %>
+            <% if (objlist[k].value === 'key'){ %>
+            <a href="javascript:;" class="sc-aside-key" data-schash="<%= objlist[k].hash %>"><%= objlist[k].label %></a>
+            <% } %>
+        <% } %>
+        </ul>
+    </div>
+    
+    
+    <div class="sc-main">
+        <ul>
+        <% for( var i = 0, checkedVal = obj.checkedVal; i < objlist.length; i++) { %>
+
+            <% if(objlist[i].value === 'key') { %>
+                <a href="javascript:;" class="sc-main-item-key" id="<%= objlist[i].hash %>"><%= objlist[i].label %></a>
+            <% } else { %>
+                <% var selectedStr = (!!checkedVal && ("," + checkedVal + ",").indexOf("," + objlist[i].value + ",") != -1) ? "sc-main-item-value-selected" : ""; %>
+                <a href="javascript:;" class="sc-main-item-value sc-main-item-border <%=selectedStr%>" data-sc-value="<%= objlist[i].value %>"><%= objlist[i].label %></a>
+            <% } %>
+
+        <% } %>
+        </ul>
+    </div>
+    
+</div>

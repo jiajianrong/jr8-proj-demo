@@ -1,3 +1,7 @@
+@charset "UTF-8";
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +11,18 @@ html {
 }
 body {
     position: relative;
-    font: 14px/20px Helvetica, sans-serif, arial;
-    color: #424242;
-    background-color: #eee;
+    //font: 14px/20px Helvetica, sans-serif, arial;
+    font-family: Helvetica, sans-serif, arial;
+    color: #333;
     font-size-adjust: none;
     -webkit-text-size-adjust: none;
     background-color: #f6f6f6;
-    font-size: 14px;
+    
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4 {
@@ -92,6 +101,7 @@ html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
     -webkit-appearance: button; /* 2 */
+   appearance: button;
 }
 
 /* *
@@ -104,6 +114,7 @@ and IE 8+.
 button,
 select {
     text-transform: none;
+    transform: none;
 }
 
 /* *
@@ -136,8 +147,56 @@ input {
 
 
 
-//@import 'component/global.less';
-//@import 'component/icon.less';
-//@import 'component/form.less';
-//@import 'component/btn.less';
-//@import 'component/modal.less';
+
+
+
+
+
+
+
+
+
+
+/**
+ * 
+ * @authors Benjamin (cuew1987@gmail.com)
+ * @date    2015-05-14 16:48:23
+ * @version $Id$
+ */
+/* media query */
+html {
+  font-size: 50px;
+}
+
+/*小屏手机默认字体设为12px, 防止10px显示太小*/
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 0.24rem;
+  }
+} 
+
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 60px;
+  }
+  body {
+    font-size: 0.2rem;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 75px;
+  }
+}
+@media screen and (min-width: 640px) {
+  html {
+    font-size: 100px;
+  }
+}
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 125px;
+  }
+}
+
+

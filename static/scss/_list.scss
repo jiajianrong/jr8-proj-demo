@@ -1,11 +1,12 @@
+@import "/static/scss/_rem";
 @import "/static/scss/_mark";
 
 .sl-loading {
     width: 100%;
-    height: 80px;
-    padding-top: 20px;
-    background: url(/static/img/loading.gif) no-repeat #fff center 50px;
-    background-size: 30px;
+    height: rem(160px);
+    padding-top: rem(40px);
+    background: url(/static/img/loading.gif) no-repeat #fff center rem(100px);
+    background-size: rem(60px);
     text-align: center;
     color: #cacaca;
 }
@@ -15,8 +16,8 @@
 .sl-empty {
     color: #a6afb9;
     text-align: center;
-    padding: 20px 0;
-    font-size: 12px;
+    padding: rem(40px 0);
+    font-size: rem(24px);
 }
 
 
@@ -25,11 +26,11 @@
 //----------
 // 右箭头
 //----------
-/* @mixin list-item-mark($backgroundColor: #CCCCCC, $width: 7px, $rotate:60deg){
+/* @mixin list-item-mark($backgroundColor: #CCCCCC, $width: rem(14px), $rotate:60deg){
     
     display: block;
     position: relative;
-    padding-right: 15px;
+    padding-right: rem(30px);
     
     &::after,
     &::before {
@@ -40,7 +41,7 @@
         height: 2px;
         background-color: $backgroundColor;
         top: 50%;
-        right: 6px;
+        right: rem(12px);
         margin-top: -1px;
     }
     
@@ -55,17 +56,17 @@
 } */
 
 
-@mixin list-item-mark($backgroundColor: #CCCCCC, $width: 7px, $rotate:60deg){
+@mixin list-item-mark($backgroundColor: #CCCCCC, $width: rem(14px), $rotate:60deg){
     
     @include mark-back();
 
-    padding-right: 15px;
+    padding-right: rem(30px);
     
     &::after,
     &::before {
         width: $width;
         left: initial;
-        right: 6px;
+        right: rem(12px);
     }
     
     &::after {

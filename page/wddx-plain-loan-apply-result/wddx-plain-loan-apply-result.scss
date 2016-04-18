@@ -1,0 +1,75 @@
+@import "/static/scss/_rem";
+@import "/static/scss/_variables";
+@import "/static/scss/_button";
+
+
+html,
+body {
+    
+    background-color: #fff;
+}
+
+
+
+.header {
+    background-color: $bgApp58;
+    text-align: center;
+    padding-top: rem(52px);
+    padding-bottom: rem(60px);
+    font-size: rem(36px);
+    font-weight: bold;
+    color: #fff;
+    .icon-check {
+        position: relative;
+        display: inline-block;
+        width: rem(124px);
+        height: rem(124px);
+        background: url(img/icon_check.png?__inline);
+        background-size: 100% 100%;
+        margin-bottom: rem(40px);
+    }
+}
+
+
+
+
+.section {
+    
+    li {
+        display: -webkit-box;
+        display: box;
+        font-size: rem(24px);
+        color: $fontSub;
+        border-bottom: $lineBorder;
+        
+        .cell {
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            box-sizing: border-box;
+            width: 50%;
+            padding: rem(28px) 0;
+            padding-left: rem(30px);
+            border-right: $lineBorder;
+            
+            &:first-child {
+                padding-left: rem(56px);
+            }
+        }
+        
+        .line-cell {
+            padding: rem(30px) rem(56px);
+            line-height: rem(44px);
+        }
+    }
+}
+
+
+
+.footer {
+    padding: 0 rem(30px);
+    .btn-submit {
+        @include button;
+        padding: rem(15px) 0;
+        font-weight: bold;
+    }
+}

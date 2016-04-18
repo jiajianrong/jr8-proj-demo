@@ -128,20 +128,23 @@ define('libs/common.validate', function(require, exports, module) {
         rules: {
             // 验证给定的值不为空
             isNonEmpty: function(value) {
-                return !!value && (value.trim() != '');
+                return !!value && (value.trim()!='');
+            },
+            // 姓名，可以包含 .·
+            isName: function(value) {
+                return !!value && (value.trim()!='') && /^[\.·\u4e00-\u9fa5]{2,20}$/.test(value);
             },
             // 验证给定的值是否是数字
             isNumber: function(value) {
-                return !!value && (value.trim() != '') && !isNaN(value);
+                return !!value && (value.trim()!='') && !isNaN(value);
             },
             // 验证给定的值是否只是字母或数字
             isAlphaNum: function(value) {
                 return !/[^a-z0-9]/i.test(value);
             },
-            // 下拉框值不能为-1
+            // 下拉框值不能为-1,'',null,undefined
             mustSelect: function(value) {
-                return !!value && (value.trim() != '') && (value != '-1');
-                // regexp: "(?!.*-1)^.*$"
+                return (!!value&&value!=0) && (value.trim() != '') && (value != '-1');
             },
             cardNumber: function(value) {
                 return isCardNumber(value);
@@ -149,7 +152,7 @@ define('libs/common.validate', function(require, exports, module) {
             email: function(value) {
                 return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i.test(value);
             },
-            NumberForDB: function(value) {
+            currency: function(value) {
                 return /^(?:[1-9]\d{0,16}(\.\d{1,2})?|0\.\d{1,2})$/.test(value);
             },
             bankCard: function(value) {
