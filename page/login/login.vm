@@ -7,7 +7,6 @@
 </head>
 <body>
     #set($title = "58金融web demo系统登录")
-    #parse('/widget/navbar/navbar.vm')
     
     
     <form id="form" method="post" action="/login">

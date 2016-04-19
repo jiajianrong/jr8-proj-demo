@@ -2039,7 +2039,63 @@ var Zepto = (function() {
 
 
 
-    window.Zepto = Zepto;
-    window.$ = Zepto;
-    module.exports = Zepto;
+
+// Prevent dup ajax being sent
+// jiajianrong@58.com
+// 2016-04-19
+;(function(Zepto){
+    var pendingRequests = Zepto.pendingRequests = {};
+    
+    Zepto.ajaxSettings.beforeSend = function (xhr, options) {
+        
+        var key = options.url,
+            complete = options.complete,
+            flag = !!options.dontIntercept,   // 判定是否需要拦截重复ajax。
+            re1 = /(.+)&_=\d{13}($|[#&].*)/,
+            re2 = /(.+)?_=\d{13}$/,
+            re3 = /(.+\?)_=\d{13}([#&].*)/;
+        
+        if (flag)
+            return true;
+        
+        
+        // in case options.cache is false
+        if (re1.test(key))
+            key = key.replace(re1,'$1$2');
+        else if (re2.test(key))
+            key = key.replace(re2,'$1$2');
+        else if (re3.test(key))
+            key = key.replace(re3,'$1$2');
+        
+        
+        if (pendingRequests[key])
+            return false;               // xhr.abort();
+        else
+            pendingRequests[key] = xhr; // pendingRequests[key].abort();
+        
+        
+        // 5s后可以发送请求
+        var timer = setTimeout(function () {
+            clearTimeout(timer);
+            timer = null;
+            pendingRequests = {};
+        }, 5000);
+        
+        
+        options.complete = function (xhr, Status) { // complete方法的默认形参
+            delete pendingRequests[key];
+            complete && complete.apply(this, arguments); //在options下执行
+        };
+        
+        return true;
+    }
+    
+})(Zepto)
+
+
+
+;
+window.Zepto = Zepto;
+window.$ = Zepto;
+module.exports = Zepto;
 } )
