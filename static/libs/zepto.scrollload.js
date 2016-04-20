@@ -47,7 +47,7 @@ define( 'libs/zepto.scrollload', function(require, exports, module){
     
     // __status { "init": 0, "working": 1, "pause": 2, "destroyed": 3, "reinit": 4 };
     
-    function ScrollLoad(settings) {}
+    function ScrollLoad() {}
     
     
     
@@ -117,7 +117,7 @@ define( 'libs/zepto.scrollload', function(require, exports, module){
         }, _this);
         
         this.loadData().then(function(){
-            sl.kickoff();
+            sl.kickoff(_this.settings);
             
             // 开始监听window scroll
             $win.on( 'sl:loading.scrollload', _this.__hook );
