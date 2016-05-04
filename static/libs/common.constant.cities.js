@@ -90,9 +90,6 @@ define('libs/common.constant.cities', function(require, exports, module) {
             "label": "北京",
             "value": "bj"
         }, {
-            "label": "西双版纳",
-            "value": "bn"
-        }, {
             "label": "亳州",
             "value": "bozhou"
         }, {
@@ -977,6 +974,9 @@ define('libs/common.constant.cities', function(require, exports, module) {
             "value": "key",
             "hash": "W"
         }, {
+            "label": "乌鲁木齐",
+            "value": "xj"
+        }, {
             "label": "万宁",
             "value": "wanning"
         }, {
@@ -1074,9 +1074,6 @@ define('libs/common.constant.cities', function(require, exports, module) {
             "label": "忻州",
             "value": "xinzhou"
         }, {
-            "label": "乌鲁木齐",
-            "value": "xj"
-        }, {
             "label": "锡林郭勒盟",
             "value": "xl"
         }, {
@@ -1085,6 +1082,9 @@ define('libs/common.constant.cities', function(require, exports, module) {
         }, {
             "label": "西宁",
             "value": "xn"
+        }, {
+            "label": "西双版纳",
+            "value": "bn"
         }, {
             "label": "邢台",
             "value": "xt"
