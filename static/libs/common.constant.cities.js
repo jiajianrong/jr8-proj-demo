@@ -5,6 +5,28 @@
 define('libs/common.constant.cities', function(require, exports, module) {
 
     return {
+        
+        /**
+         * 给定value，查找label
+         * @param {Object} value
+         */
+        getLabel: function(value) {
+            var list = this.list,
+                i,
+                item,
+                valueMatched = '';
+                
+            for (i=0;i<list.length;i++) {
+                item = list[i];
+                if (item.value && item.value===value) {
+                    valueMatched = item.label;
+                    break;
+                }
+            }
+            
+            return valueMatched;
+        },
+        
 
         list: [{
             "label": "A",

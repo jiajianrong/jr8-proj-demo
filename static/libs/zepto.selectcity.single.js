@@ -26,7 +26,6 @@
 define( 'libs/zepto.selectcity.single', function(require, exports, module) {
 
     var $ = require('zepto'),
-        historystate = require('libs/common.historystate'),
         $body = $('body'),
         tpl = __inline('./zepto.selectcity.single.tmpl');
 
@@ -49,11 +48,13 @@ define( 'libs/zepto.selectcity.single', function(require, exports, module) {
         }.bind(this));
         
         // mixin callback
-        ['onSelect','onBackRefreshFn'].forEach( $.proxy( function(item){
+        ['onSelect'].forEach( $.proxy( function(item){
             this[item] = opts[item] || function(){};
         }, this) );
 
         this.init();
+        
+        opts.onLoad && opts.onLoad.bind(this)();
     }
 
 
@@ -94,7 +95,7 @@ define( 'libs/zepto.selectcity.single', function(require, exports, module) {
             
             setTimeout(function(){
                 self.hide();
-            }, 300);
+            }, 250);
             
         });
 
@@ -103,9 +104,7 @@ define( 'libs/zepto.selectcity.single', function(require, exports, module) {
         });
         
         // 处理浏览器后退数据丢失
-        historystate({
-            backRefreshFn: this.onBackRefreshFn.bind(this)
-        })
+        
     }
 
     SelectCitySingle.prototype.show = function () {
