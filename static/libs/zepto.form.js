@@ -22,7 +22,7 @@ define( 'libs/zepto.form', function(require, exports, module){
                 return item.name;
             });
         
-        this.find('[name]').forEach(function(item){
+        this.find('[name]').each(function(i,item){
             if($.inArray(item.name, nameArr) != -1)
                 arrRtn.push(formData[nameArr.indexOf(item.name)]);
         });
@@ -167,7 +167,8 @@ define( 'libs/zepto.form', function(require, exports, module){
                     errmsg: validateCfg.errmsg
                 }
             });
-            
+        
+            formData = Array.prototype.slice.call(formData);
             
             if (options) {
                 var _$form = this;
@@ -186,7 +187,7 @@ define( 'libs/zepto.form', function(require, exports, module){
                         
                     // radio checkbox   
                     } else if ($items.size()>1) {
-                        $items.forEach(function(it){
+                        $items.each(function(i,it){
                             if (it.checked) item.value = it.value;
                         })
                     }
