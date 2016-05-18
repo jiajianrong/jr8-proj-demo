@@ -159,7 +159,7 @@ define('libs/common.validate', function(require, exports, module) {
                 return /^[1-9]\d{15,20}$/.test(value);
             },
             telephone: function(value) {
-                return /^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0|5|6|7|8|9])\d{8}$/.test(value);
+                return /^1\d{10}$/.test(value);
             }
         },
 
