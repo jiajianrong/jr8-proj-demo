@@ -234,6 +234,11 @@ fis.config.merge({
             'performance-framework': {
                 urlPrefix: 'http://10.48.210.28:3000/saveTime?project=daoliu-wddk'
             }
+        },
+        postprocessor: {
+            'framework-trace' : {
+                traceUrlPrefix: 'http://log.jr.58888.com/trace?project=daoliu-test&'
+            }
         }
     }
 });

@@ -224,6 +224,10 @@ var define;
             }
         }
     };
+    
+    require.has = function (id) {
+        return !!modulesMap[id];
+    };
 
     require.loadJs = function (url) {
         createScript(url);
