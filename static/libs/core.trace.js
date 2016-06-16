@@ -52,6 +52,18 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * 发送
      * @param {Object} traceObj
@@ -74,10 +86,7 @@ define("libs/core.trace", function(require, exports, module){
     Trace.prototype = {
         
         // 替换成日志server的实际地址
-        // 如
-        // http://log.jr.58.com/trace?project=daoliu-test&
-        // 如未替换则请在fis.conf里设置fis-postprocessor-framework-trace
-        traceUrlPrefix: '__framework_placeholder_trace_url_prefix__',
+        traceUrlPrefix: 'http://log.jr.58888.com/trace?project=daoliu-test&',
         
 
         /**
@@ -212,6 +221,63 @@ define("libs/core.trace", function(require, exports, module){
         
     };
 
+    
+    
+    
+    
+    
+    
+    
+    // document.addEventListener( "DOMContentLoaded", function() {
+    document.body.addEventListener( 'click', function(e){
+        
+        var traceElement = e.target,
+            traceObject;
+        
+        while( !traceElement.getAttribute('data-trace') && traceElement.parentNode!==document.body ) {
+            traceElement = traceElement.parentNode;
+        }
+        
+        // 没有 [data-trace] 代理则返回
+        if ( traceElement===document.body) {
+            return true;
+        }
+        
+        
+        // 计算traceObject
+        traceObject = traceElement.getAttribute('data-trace');
+        traceObject = /\{/.test(traceObject) ? JSON.parse(traceObject) : { tid: +traceObject };
+        
+        
+        // 当前trace元素是a标签？
+        if ( traceElement.tagName.toLowerCase()==='a' ) {
+            var url = traceObject.tgtUrl = traceElement.getAttribute('href');
+            if ( ! /(?:^#)|(?:^tel\:)/i.test(url) ) {
+                e.preventDefault();
+            }   
+        }
+        
+        
+        // 发送打点
+        if ( require && require.has && require.has('libs/core.trace') ) {
+            var coreTrace = require('libs/core.trace');
+            coreTrace.send( traceObject );
+        }
+        
+        return true;
+    } );
+    // } );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
