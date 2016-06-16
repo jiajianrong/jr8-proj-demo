@@ -126,7 +126,11 @@ define("libs/core.trace", function(require, exports, module){
                     callback = to.callback;
             }
             
-            this.sendViaScript( this.traceUrlPrefix+traceParams, callback, isLeave );
+            // https站点 fallback to sending image
+            if ( /https/i.test(location.protocol) )
+                this.sendViaImage( this.traceUrlPrefix+traceParams, callback, isLeave );
+            else
+                this.sendViaScript( this.traceUrlPrefix+traceParams, callback, isLeave );
             
         },
         
@@ -159,12 +163,12 @@ define("libs/core.trace", function(require, exports, module){
                     
                     script = document.createElement('SCRIPT');
                     
-                    script.src = traceUrl;
-                    
                     script.onload = script.onerror = function() {
                         sent = true;
                         callback.apply(null);
                     };
+                    
+                    script.src = traceUrl;
                     
                     document.body.appendChild(script);
                     
@@ -186,6 +190,59 @@ define("libs/core.trace", function(require, exports, module){
             
             
         },
+        
+        
+        
+        
+        
+        /**
+         * 用image.src发送打点
+         * 
+         * @param {Object} traceUrl
+         * @param {Object} callback
+         */
+        sendViaImage: function(traceUrl, callback, isLeave) {
+            
+            var img,
+                
+                
+                sent = false,
+                
+                
+                callback = callback || function(){},
+                
+                
+                sendTimer = setTimeout(function(){
+                    
+                    clearTimeout(sendTimer);
+                    sendTimer = null;
+                    
+                    img = new Image();
+                    
+                    img.onload = img.onerror = function() {
+                        sent = true;
+                        callback.apply(null);
+                    };
+                    
+                    img.src = traceUrl;
+                    
+                },0),
+                
+                
+                timeoutTimer = setTimeout( function(){
+                    
+                    clearTimeout(timeoutTimer);
+                    timeoutTimer = null;
+                    
+                    img.onreadystatechange = img.onload = img.onerror = img.readyState = null;
+                    
+                    !sent && callback.apply(null);
+                    
+                }, isLeave?300:3000 );
+            
+            
+        },
+        
         
         
         
