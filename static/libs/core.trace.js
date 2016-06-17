@@ -4,7 +4,155 @@
  * 
  * 发送日志
  * 
- * Demo:
+ * 注：
+ * 对于普通页面标签里的打点，因为click代理是注册在body上，
+ * ios不支持非clickable元素的click冒泡到body
+ * 
+ * 所以ios下务必将 data-trace 写在<a>或<input>之类的clickable的元素上
+ * 如希望将 data-trace 写在 <div>上，必须给<div>加 cursor:pointer
+ * 或者在<div>上注册click事件（使用代理的话代理元素不能是body），然后手动调用send方法打点
+ * 
+ * 否则ios下<div>等非clickable的元素不支持 data-trace 自动打点
+ * 
+ * 
+ * 
+ * 注：
+ * 默认使用script.src打点
+ * 对于https站点自动回退至image.src （浏览器开启无图模式时 无效）
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 自动打点 Demo
+ * 
+ * (1)
+ * <a href='javascript:;' data-trace='6'>test</a>
+ * 
+ * (2)
+ * <a href='javascript:;' data-trace='abc'>test</a> // 不推荐，发送的打点最好为int
+ * 
+ * (3)
+ * <a href='/next/page/url.html?p1=a&p2=b' data-trace='6'>test</a> // 打点后页面自动跳转
+ * 
+ * (4)
+ * <div style='cursor:pointer;' data-trace='6'>test</div>
+ * 
+ * (5)
+ * <a href='javascript:;' data-trace='{tid:6,otherParam:"aaa"}'>test</a>
+ * <a href='/next/page/url.html?p1=a&p2=b' data-trace='{tid:6,otherParam:"aaa"}'>test</a>
+ * <a href='javascript:;' data-trace='{tid:6,otherParam:"aaa",tgtUrl:"/next/page/url.html?p1=a&p2=b"}'>test</a>
+ * // 支持json对象 以发送多个打点参数
+ * // 注：w3c对于element嵌入json的标准是外层单引号，里层双引号。 写反则无效
+ * // 自动打点不支持json里写callback回调函数，若有需求请使用手动打点（如下）
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 手动打点 Demo
+ * 
+ * var coretrace = require('libs/core.trace');
+ * 在业务代码里的调用方式：
+ * 
+ * 
+ * 
+ * (1) 唯一形参，参数可以为  数值  或  字符串  或  自定义的trace对象
+ * 
+ * (1.1)
+ * coretrace.send(6);
+ * 
+ * (1.2)
+ * coretrace.send('abc'); // 不推荐，发送的打点最好为int
+ * 
+ * (1.3)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb'
+ * });
+ * 
+ * (1.4)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb',
+ *     tgtUrl: '/next/page/url.html?p1=a&p2=b' // 指定发送打点后页面跳转路径
+ * });
+ * 
+ * (1.5)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb',
+ *     callback: function() {} // 打点完成的回调 ，支持页面跳转，如 location.href='/next/page/url.html?p1=a&p2=b'
+ * });
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * (2) 双形参，第二个参数为  页面跳转的字符串
+ * 
+ * (2.1)
+ * coretrace.send(6, '/next/page/url.html?p1=a&p2=b');
+ * 
+ * (2.2)
+ * coretrace.send('abc', '/next/page/url.html?p1=a&p2=b'); // 不推荐，发送的打点最好为int
+ * 
+ * (2.3)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb'
+ * }, '/next/page/url.html?p1=a&p2=b' );
+ * 
+ * (2.4)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb',
+ *     callback: function() {} // 打点完成的回调 
+ * }, '/next/page/url.html?p1=a&p2=b' );   
+ * // 注：同时定义 第一个参数的callback 和  第二个参数为字符串时，callback里最好不要有页面跳转的逻辑；否则二者冲突必定有一个失效
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * (3) 双形参，第二个参数为  回调函数 （  支持页面跳转，如 location.href='/next/page/url.html?p1=a&p2=b' ）
+ * 
+ * (3.1)
+ * coretrace.send(6, function(){});
+ * 
+ * (3.2)
+ * coretrace.send('abc', function(){}); // 不推荐，发送的打点最好为int
+ * 
+ * (3.3)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb'
+ * }, function(){} );
+ * 
+ * (3.4)
+ * coretrace.send({
+ *     tid: 6,
+ *     otherParam1: 'aaa',
+ *     otherParam2: 'bbb',
+ *     callback: function() {}
+ * }, function(){} );   
+ * // 注：同时定义 第一个参数的callback 和  第二个参数为回调函数时，后者会覆盖前者。因为确实没有必要把回调逻辑拆为两个callback 
+ * 
  * 
  * 
  */
@@ -86,7 +234,7 @@ define("libs/core.trace", function(require, exports, module){
     Trace.prototype = {
         
         // 替换成日志server的实际地址
-        traceUrlPrefix: 'http://log.jr.58888.com/trace?project=daoliu-test&',
+        traceUrlPrefix: 'http://log.jr.585858888.com/trace?project=daoliu-test&',
         
 
         /**
@@ -126,8 +274,8 @@ define("libs/core.trace", function(require, exports, module){
                     callback = to.callback;
             }
             
-            // https站点 fallback to sending image
-            if ( /https/i.test(location.protocol) )
+            // https fallback to send image
+            if ( /^https/i.test(location.protocol) )
                 this.sendViaImage( this.traceUrlPrefix+traceParams, callback, isLeave );
             else
                 this.sendViaScript( this.traceUrlPrefix+traceParams, callback, isLeave );
