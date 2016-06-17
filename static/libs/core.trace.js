@@ -8,7 +8,7 @@
  * 对于普通页面标签里的打点，因为click代理是注册在body上，
  * ios不支持非clickable元素的click冒泡到body
  * 
- * 所以ios下务必将 data-trace 写在<a>或<input>之类的clickable的元素上
+ * 所以ios下务必将 data-trace 写在<a>或<input>或<button>之类的clickable的元素上
  * 如希望将 data-trace 写在 <div>上，必须给<div>加 cursor:pointer
  * 或者在<div>上注册click事件（使用代理的话代理元素不能是body），然后手动调用send方法打点
  * 
@@ -19,7 +19,7 @@
  * 注：
  * 默认使用script.src打点
  * 对于https站点自动回退至image.src （浏览器开启无图模式时 无效）
- * 
+ * 详情参见 /page/page-trace-usage/
  * 
  * 
  * 
@@ -41,9 +41,9 @@
  * <div style='cursor:pointer;' data-trace='6'>test</div>
  * 
  * (5)
- * <a href='javascript:;' data-trace='{tid:6,otherParam:"aaa"}'>test</a>
- * <a href='/next/page/url.html?p1=a&p2=b' data-trace='{tid:6,otherParam:"aaa"}'>test</a>
- * <a href='javascript:;' data-trace='{tid:6,otherParam:"aaa",tgtUrl:"/next/page/url.html?p1=a&p2=b"}'>test</a>
+ * <a href='javascript:;' data-trace='{"tid":6,"otherParam":"aaa"}'>test</a>
+ * <a href='/next/page/url.html?p1=a&p2=b' data-trace='{"tid":6,"otherParam":"aaa"}'>test</a>
+ * <a href='javascript:;' data-trace='{"tid":6,"otherParam":"aaa","tgtUrl":"/next/page/url.html?p1=a&p2=b"}'>test</a>
  * // 支持json对象 以发送多个打点参数
  * // 注：w3c对于element嵌入json的标准是外层单引号，里层双引号。 写反则无效
  * // 自动打点不支持json里写callback回调函数，若有需求请使用手动打点（如下）
@@ -199,7 +199,26 @@ define("libs/core.trace", function(require, exports, module){
     };
     
     
-    
+    /**
+     * helper
+     * 判断是否需要页面跳转
+     */
+    var checkIfLeave = function(traceObj) {
+        
+        var to = traceObj,
+            tgtUrl = to.tgtUrl,
+            callback = to.callback,
+            isLeave = false;
+        
+        isLeave = tgtUrl && (! /(?:javascript\:)|(?:^#)/i.test(tgtUrl) );
+        
+        if ( !isLeave && callback ) {
+            var cbStr = callback.toString();
+            isLeave = /location\.href\s*=/i.test(cbStr);
+        }
+        
+        return isLeave;
+    };
     
     
     
@@ -234,7 +253,7 @@ define("libs/core.trace", function(require, exports, module){
     Trace.prototype = {
         
         // 替换成日志server的实际地址
-        traceUrlPrefix: 'http://log.jr.585858888.com/trace?project=daoliu-test&',
+        traceUrlPrefix: 'http://log.jr.5888888.com/trace?project=daoliu-test&',
         
 
         /**
@@ -249,7 +268,7 @@ define("libs/core.trace", function(require, exports, module){
             var to = this.traceObj,
                 tgtUrl = to.tgtUrl,
                 traceParams = json2query(to),
-                isLeave = tgtUrl && (! /(?:javascript\:)|(?:^#)/i.test(tgtUrl) ),
+                isLeave = checkIfLeave(to),
                 callback;
             
             // 修正callback参数
@@ -439,24 +458,30 @@ define("libs/core.trace", function(require, exports, module){
         var traceElement = e.target,
             traceObject;
         
-        while( !traceElement.getAttribute('data-trace') && traceElement.parentNode!==document.body ) {
+        while( traceElement && 
+               traceElement.parentNode!==document.body && 
+               traceElement!==document.body &&
+               !traceElement.getAttribute('data-trace') ) {
             traceElement = traceElement.parentNode;
         }
         
-        // 没有 [data-trace] 代理则返回
-        if ( traceElement===document.body) {
+        if (!traceElement) {
             return true;
         }
         
+        traceObject = traceElement.getAttribute('data-trace');
+        
+        if (!traceObject) {
+            return true;
+        }
         
         // 计算traceObject
-        traceObject = traceElement.getAttribute('data-trace');
         traceObject = /\{/.test(traceObject) ? JSON.parse(traceObject) : { tid: +traceObject };
         
         
         // 当前trace元素是a标签？
         if ( traceElement.tagName.toLowerCase()==='a' ) {
-            var url = traceObject.tgtUrl = traceElement.getAttribute('href');
+            var url = traceObject.tgtUrl = ( traceObject.tgtUrl || traceElement.getAttribute('href') );
             if ( ! /(?:^#)|(?:^tel\:)/i.test(url) ) {
                 e.preventDefault();
             }   
@@ -464,10 +489,13 @@ define("libs/core.trace", function(require, exports, module){
         
         
         // 发送打点
-        if ( require && require.has && require.has('libs/core.trace') ) {
-            var coreTrace = require('libs/core.trace');
-            coreTrace.send( traceObject );
-        }
+        //-----------
+        //if ( require && require.has && require.has('libs/core.trace') ) {
+        //    var coreTrace = require('libs/core.trace');
+        //    coreTrace.send( traceObject );
+        //}
+        //-----------
+        TraceProxy.send( traceObject );
         
         return true;
     } );

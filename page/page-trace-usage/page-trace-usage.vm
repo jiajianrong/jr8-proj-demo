@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "登录")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./page-trace-usage.scss">
+</head>
+<body>
+    
+    <a href='javascript:;' data-trace='1'>auto-1</a><br /><br />
+    
+    <a href='/next/page/url.html?p1=a&p2=b' data-trace='2'>auto-2</a><br /><br />
+    
+    <div style='cursor:pointer;' data-trace='3'>auto-3</div><br /><br />
+    
+    <a href='javascript:;' data-trace='{"tid":4,"otherParam":"aaa"}'>auto-4</a><br /><br />
+    
+    <a href='/next/page/url.html?p1=a&p2=b' data-trace='{"tid":5,"otherParam":"aaa"}'>auto-5</a><br /><br />
+    
+    <a href='javascript:;' data-trace='{"tid":6,"otherParam":"aaa","tgtUrl":"/next/page/url.html?p1=a&p2=b"}'>auto-6</a><br /><br />
+    
+    <div style='cursor:pointer;' data-trace='{"tid":7,"otherParam":"aaa","tgtUrl":"/next/page/url.html?p1=a&p2=b"}'>auto-7</div><br /><br />
+    
+    
+    
+    <div id="manual-1">manual-1</div><br /><br />
+    
+    <div id="manual-2">manual-2</div><br /><br />
+    
+    <div id="manual-3">manual-3</div><br /><br />
+    
+    <div id="manual-4">manual-4</div><br /><br />
+    
+    <div id="manual-5">manual-5</div><br /><br />
+    
+    <div id="manual-6">manual-6</div><br /><br />
+    
+    <div id="manual-7">manual-7</div><br /><br />
+    
+    <div id="manual-8">manual-8</div><br /><br />
+    
+    <div id="manual-9">manual-9</div><br /><br />
+    
+    <div id="manual-10">manual-10</div><br /><br />
+    
+    <div id="manual-11">manual-11</div><br /><br />
+    
+    
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['page/page-trace-usage/page-trace-usage'],function(app){
+        app();
+    });
+    </script>
+</body>
+</html>

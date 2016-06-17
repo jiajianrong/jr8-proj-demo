@@ -26,7 +26,8 @@ define("page/page-form/page-form", function(require, exports, module){
     
             var $this = $(this);
             
-            if($this.hasClass('disabled')) return;
+            if($this.hasClass('disabled')) 
+                return;
 
 
             
@@ -175,7 +176,7 @@ define("page/page-form/page-form", function(require, exports, module){
 
                     $this.text('下一步').removeClass('disabled');
 
-                    return false;
+                    return;
                 }
 
                 $.ajax({

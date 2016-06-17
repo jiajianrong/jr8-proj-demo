@@ -64,20 +64,20 @@
 
         <div class="loan-item flex-box">
             <div>类型</div>
-            <select id="contractType" name="contractType">
+            <select id="contractType" name="contractType" data-trace="1">
                 #ModuleMap( $contractTypeMap $contractType )
             </select>
         </div>
         <div class="loan-item flex-box">
             <div>类型(元)</div>
             <div class="col-1">
-                <input type="number" value="$!{financeAmount}" name="financeAmount" />
+                <input type="number" value="$!{financeAmount}" name="financeAmount" data-trace="2" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型(%)</div>
             <div class="col-1">
-                <input type="number" value="$!{firstPayRatio}" name="firstPayRatio" />
+                <input type="number" value="$!{firstPayRatio}" name="firstPayRatio" data-trace="3" />
             </div>
         </div>
         <div class="loan-item flex-box">
@@ -85,11 +85,11 @@
             ##0有1无
             #if($mortgage=="0")
             <div class="toggle-btn toggle-on">
-                <span data-alternative="off">on</span>
+                <span data-alternative="off" data-trace="4" style="cursor: pointer;">on</span>
                 <input type="hidden" name="mortgage" value="0" data-alternative="1" />
             </div>
             #else
-            <div class="toggle-btn toggle-off">
+            <div class="toggle-btn toggle-off" data-trace="4" style="cursor: pointer;">
                 <span data-alternative="on">off</span>
                 <input type="hidden" name="mortgage" value="1" data-alternative="0" />
             </div>
@@ -98,7 +98,7 @@
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
             <div class="col-1">
-                <input class="region-related" type="text" value="$!{indicator}" name="indicator" />
+                <input class="region-related" type="text" value="$!{indicator}" name="indicator" data-trace="5" />
             </div>
         </div>
         
@@ -109,13 +109,13 @@
         <div class="loan-item flex-box">
             <div>类型(元)</div>
             <div class="col-1">
-                <input type="number" value="$!{carDealPrice}" name="carDealPrice" />
+                <input type="number" value="$!{carDealPrice}" name="carDealPrice" data-trace="6" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text" value="$!{models}" name="models" />
+                <input type="text" value="$!{models}" name="models" data-trace="6" />
             </div>
         </div>
         <div class="loan-item flex-box">
@@ -124,30 +124,30 @@
                 
             </div>
             <input class="col-1" type="text" value="$!{frameNo}" name="frameNo" 
-                data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' />
+                data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' data-trace="7" />
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text"  value="$!{brand}" name="brand" />
+                <input type="text"  value="$!{brand}" name="brand" data-trace="8" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
             <div class="col-1">                
-                <input type="text" id="cardNo" value="$!{cardNo}" name="cardNo"  />
+                <input type="text" id="cardNo" value="$!{cardNo}" name="cardNo" data-trace="9" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">  
-                <input type="text" value="$!{color}" name="color" /> 
+                <input type="text" value="$!{color}" name="color" data-trace="10" /> 
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input class="col-1" type="text" value="$!{firstCardDate}" name="firstCardDate" />
+                <input class="col-1" type="text" value="$!{firstCardDate}" name="firstCardDate" data-trace="11" />
             </div>
         </div>
         
@@ -158,24 +158,24 @@
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text" value="$!{dealerName}" name="dealerName" />
+                <input type="text" value="$!{dealerName}" name="dealerName" data-trace="12" />
             </div> 
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text" value="$!{idCard}" name="idCard" id="idCard" />
+                <input type="text" value="$!{idCard}" name="idCard" id="idCard" data-trace="13" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="number" value="$!{dealerBankCardNo}" name="dealerBankCardNo" />
+                <input type="number" value="$!{dealerBankCardNo}" name="dealerBankCardNo" data-trace="14" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <select name="dealerOpenBank" data-value="$!{dealerOpenBank}" placeholder="类型" class="sel-combobox">
+            <select name="dealerOpenBank" data-value="$!{dealerOpenBank}" placeholder="类型" class="sel-combobox" data-trace="15">
                 <option value="-1">请选择</option>
                 #ModuleMap( $dealerBankMap $dealerOpenBank )
             </select>
@@ -183,19 +183,19 @@
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text" name="dealerOpenPartBank" value="$!{dealerOpenPartBank}" />                
+                <input type="text" name="dealerOpenPartBank" value="$!{dealerOpenPartBank}" data-trace="16" />                
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text" name="dealerOpenBranchBank" value="$!{dealerOpenBranchBank}" />
+                <input type="text" name="dealerOpenBranchBank" value="$!{dealerOpenBranchBank}" data-trace="17" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>邮箱(非必填)</div>
             <div class="col-1">
-                <input class="col-1" type="text" name="mail" value="$!{mail}" />                
+                <input class="col-1" type="text" name="mail" value="$!{mail}" data-trace="18" />                
             </div>
         </div>
 
@@ -206,24 +206,24 @@
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text"  value="$!{repayAccount}" name="repayAccount" />
+                <input type="text"  value="$!{repayAccount}" name="repayAccount" data-trace="19" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="text"  value="$!{repayIdCardNo}" name="repayIdCardNo" />
+                <input type="text"  value="$!{repayIdCardNo}" name="repayIdCardNo" data-trace="20" />
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                <input type="number" value="$!{repayBankCardNo}" name="repayBankCardNo" />            
+                <input type="number" value="$!{repayBankCardNo}" name="repayBankCardNo" data-trace="21" />            
             </div>
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
-            <select name="repayOpenBank" data-value="$!{repayOpenBank}" placeholder="类型" class="sel-combobox">
+            <select name="repayOpenBank" data-value="$!{repayOpenBank}" placeholder="类型" class="sel-combobox" data-trace="22">
                 <option value="-1">请选择</option>
                 #ModuleMap( $repayBankMap $repayOpenBank )
             </select>
@@ -231,7 +231,7 @@
         <div class="loan-item flex-box">
             <div>类型(非必填)</div>
             <div class="col-1">
-                <input type="number" name="reservedPhone" value="$!{reservedPhone}"/>   
+                <input type="number" name="reservedPhone" value="$!{reservedPhone}" data-trace="23"/>   
             </div>
         </div>
 
@@ -241,12 +241,12 @@
 
         <div class="loan-item flex-box">
             <div>类型</div>
-            <div class="fm-checkbox">
+            <div class="fm-checkbox" data-trace="24" style="cursor: pointer;">
                 <input type="radio" name="sex" value="1">
                 <span class="fm-icon-checkbox"></span>
                 <span class="fm-content">男生</span>
             </div>
-            <div class="fm-checkbox">
+            <div class="fm-checkbox" data-trace="24" style="cursor: pointer;">
                 <input type="radio" name="sex" value="2">
                 <span class="fm-icon-checkbox"></span>
                 <span class="fm-content">女生</span>
@@ -258,7 +258,7 @@
 
         <div class="fm-list-checkbox">
             <div class="loan-item flex-box">
-                <div class="fm-checkbox">
+                <div class="fm-checkbox" data-trace="25" style="cursor: pointer;">
                     <span class="fm-content-left">类型</span>
                     <input type="radio" name="age" value="1">
                     <span class="fm-icon-checkbox"></span>
@@ -266,7 +266,7 @@
                 </div>
             </div>
 
-            <div class="loan-item flex-box">
+            <div class="loan-item flex-box" data-trace="25" style="cursor: pointer;">
                 <div class="fm-checkbox">
                     <span class="fm-content-left">类型</span>
                     <input type="radio" name="age" value="2">
@@ -275,7 +275,7 @@
                 </div>
             </div>
 
-            <div class="loan-item flex-box">
+            <div class="loan-item flex-box" data-trace="25" style="cursor: pointer;">
                 <div class="fm-checkbox">
                     <span class="fm-content-left">类型</span>
                     <input type="radio" name="age" value="3">
@@ -287,7 +287,7 @@
         
 
         <section class="actions">
-            <button type="button" class="btn-next-step">下一步</button>
+            <button type="button" class="btn-next-step" data-trace="26">下一步</button>
         </section>
 
         

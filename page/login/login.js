@@ -16,7 +16,7 @@ define("page/login/login", function(require, exports, module){
             $btnSubmit = $('.btn-submit', $form);
         
         
-        $btnSubmit.on('click', function(){
+        $btnSubmit.on('click', function(e){
             
             var $this = $(this);
             
@@ -29,7 +29,7 @@ define("page/login/login", function(require, exports, module){
                     $.info({message:"请输入用户名和密码"});
                 });
                 */
-                return false;
+                return;
             }
             
             
