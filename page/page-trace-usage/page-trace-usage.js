@@ -5,15 +5,10 @@ define("page/page-trace-usage/page-trace-usage", function(require, exports, modu
     
     module.exports = function(opt) {
         
-        var coretrace = require('libs/core.trace');
+        var coretrace = require('libs/core.trace'),
+            $ = function(id) { return document.getElementById(id); },
+            addClick = function( id, fn ) { $(id).addEventListener('click',fn); };
         
-        var $ = function(id) {
-            return document.getElementById(id);
-        };
-        
-        var addClick = function( id, fn ) {
-            $(id).addEventListener('click',fn);
-        }
         
         
         

@@ -199,30 +199,7 @@ define("libs/core.trace", function(require, exports, module){
     };
     
     
-    /**
-     * helper
-     * 判断是否需要页面跳转
-     */
-    var checkIfLeave = function(traceObj) {
-        
-        var to = traceObj,
-            tgtUrl = to.tgtUrl,
-            callback = to.callback,
-            isLeave = false;
-        
-        isLeave = tgtUrl && (! /(?:javascript\:)|(?:^#)/i.test(tgtUrl) );
-        
-        if ( !isLeave && callback ) {
-            var cbStr = callback.toString();
-            isLeave = /location\.href\s*=/i.test(cbStr);
-        }
-        
-        return isLeave;
-    };
-    
-    
-    
-    
+ 
     
     
     
@@ -268,32 +245,41 @@ define("libs/core.trace", function(require, exports, module){
             var to = this.traceObj,
                 tgtUrl = to.tgtUrl,
                 traceParams = json2query(to),
-                isLeave = checkIfLeave(to),
+                isLeave = false,
                 callback;
             
             // 修正callback参数
             traceParams = traceParams.replace(/callback=[^#&]+/,'callback=true');
             
-            if (isLeave) {
-                callback = this.emulateLeave(tgtUrl);
-            }
             
             if (to.callback) {
-                // 如果leave和callback同时存在，合并二者
-                if (callback)
-                    callback = (function() {
-                        var f = callback;
-                        return function() {
-                            f.apply(null);
-                            to.callback.apply(null);
-                        };
-                    })();
-                // 否则直接赋值
-                else
-                    callback = to.callback;
+                callback = to.callback;
+                isLeave = this.checkIfCallbackLeave();
             }
             
-            // https fallback to send image
+            
+            if (this.checkIfDirectLeave()) {
+                
+                var l = this.emulateLeave(tgtUrl);
+                
+                if (callback) {
+                    callback = (function() {
+                        var c = callback;
+                        return function() {
+                            c.apply(null);
+                            l.apply(null);
+                        };
+                    })();
+                    
+                } else {
+                    callback = l;
+                }
+                
+                isLeave = isLeave || true;
+            }
+            
+            
+            // in case https fallback to send image
             if ( /^https/i.test(location.protocol) )
                 this.sendViaImage( this.traceUrlPrefix+traceParams, callback, isLeave );
             else
@@ -439,6 +425,42 @@ define("libs/core.trace", function(require, exports, module){
                 
             };
             
+        },
+        
+        
+        
+        
+        /**
+         * helper
+         * 判断是否需要页面跳转
+         */
+        checkIfCallbackLeave: function() {
+            
+            var callback = this.traceObj.callback,
+                isLeave = false;
+            
+            if ( callback ) {
+                var cbStr = callback.toString();
+                isLeave = /location\.href\s*=/i.test(cbStr);
+            }
+            
+            return isLeave;
+        },
+        
+        
+        
+        /**
+         * helper
+         * 判断是否需要页面跳转
+         */
+        checkIfDirectLeave: function() {
+            
+            var tgtUrl = this.traceObj.tgtUrl,
+                isLeave = false;
+            
+            isLeave = tgtUrl && ( ! /(?:javascript\:)|(?:^#)/i.test(tgtUrl) );
+            
+            return isLeave;
         }
         
         
