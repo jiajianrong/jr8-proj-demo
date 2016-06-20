@@ -161,7 +161,8 @@
 define("libs/core.trace", function(require, exports, module){
     
     
-    var encode = encodeURIComponent;
+    var encode = encodeURIComponent,
+        decode = decodeURIComponent;
     
     
     /**
@@ -187,7 +188,6 @@ define("libs/core.trace", function(require, exports, module){
      * helper
      */
     var json2query = function(obj) {
-            
         var arr;
         
         arr = Object.getOwnPropertyNames(obj).map( function(k){
@@ -195,14 +195,52 @@ define("libs/core.trace", function(require, exports, module){
         } );
         
         return arr.join('&');
-        
     };
     
     
- 
+    /**
+     * helper
+     */
+    var setCookie = window.setC = function(key, value, expires, domain){
+        document.cookie = key + "=" + encode(value)
+            + (domain ? ";domain="+domain : "")
+            + (expires ? ";path=/;expires=" + expires.toGMTString()+";" : "");
+    };
     
     
+    /**
+     * helper
+     */
+    var getCookie = window.getC = function(key){
+        var reg = new RegExp("(^| )" + key + "=([^;]*)(;|\x24)"),
+            result = reg.exec(document.cookie);
+        return result ? decode(result[2]) : null;
+    }
     
+    
+    /**
+     * helper
+     */
+    var makeUID = (function () {
+        
+        var COOKIE_KEY = 'jr8_t_c',
+            uid = getCookie(COOKIE_KEY),
+            exp,
+            t;
+        
+        if (!uid) {
+            uid = location.host.replace( /\W/gi, '' ) + '.' + (+new Date()) + Math.random();
+            exp = new Date();
+            t = exp.getTime();
+            t += 1000*3600*24*365*10;
+            exp.setTime(t);
+            setCookie( COOKIE_KEY, uid, exp );
+        }
+        
+        return function() {
+            return uid;
+        }
+    })();
     
     
     
@@ -238,23 +276,26 @@ define("libs/core.trace", function(require, exports, module){
          */
         send: function() {
             
-            // 包裹trace对象
-            this.traceObj.page = encode(location.pathname);
-            this.traceObj._ = +new Date();
-            
             var to = this.traceObj,
                 tgtUrl = to.tgtUrl,
-                traceParams = json2query(to),
+                traceParams,
                 isLeave = false,
                 callback;
             
-            // 修正callback参数
-            traceParams = traceParams.replace(/callback=[^#&]+/,'callback=true');
+            // 包裹trace对象
+            to.page = encode(location.pathname);
+            to._ = +new Date();
+            to.uid = makeUID();
+            
+            // stringify
+            traceParams = json2query(to);
             
             
             if (to.callback) {
                 callback = to.callback;
                 isLeave = this.checkIfCallbackLeave();
+                // 修正callback参数
+                traceParams = traceParams.replace(/callback=[^#&]+/,'callback=true');
             }
             
             
@@ -262,6 +303,7 @@ define("libs/core.trace", function(require, exports, module){
                 
                 var l = this.emulateLeave(tgtUrl);
                 
+                // combine callbacks
                 if (callback) {
                     callback = (function() {
                         var c = callback;
