@@ -211,7 +211,7 @@ define("libs/core.trace", function(require, exports, module){
     /**
      * helper
      */
-    var getCooki = function(key){
+    var getCookie = function(key){
         var reg = new RegExp("(^| )" + key + "=([^;]*)(;|\x24)"),
             result = reg.exec(document.cookie);
         return result ? decode(result[2]) : null;
@@ -244,7 +244,7 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    
+    alert(makeUID())
     
     /**
      * 发送
