@@ -244,7 +244,10 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    alert(makeUID())
+    
+    
+    
+    
     
     /**
      * 发送
