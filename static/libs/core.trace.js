@@ -201,7 +201,7 @@ define("libs/core.trace", function(require, exports, module){
     /**
      * helper
      */
-    var setCookie = window.setC = function(key, value, expires, domain){
+    var setCookie = function(key, value, expires, domain){
         document.cookie = key + "=" + encode(value)
             + (domain ? ";domain="+domain : "")
             + (expires ? ";path=/;expires=" + expires.toGMTString()+";" : "");
@@ -211,7 +211,7 @@ define("libs/core.trace", function(require, exports, module){
     /**
      * helper
      */
-    var getCookie = window.getC = function(key){
+    var getCooki = function(key){
         var reg = new RegExp("(^| )" + key + "=([^;]*)(;|\x24)"),
             result = reg.exec(document.cookie);
         return result ? decode(result[2]) : null;
