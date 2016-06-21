@@ -338,7 +338,8 @@ define("libs/core.trace", function(require, exports, module){
             req: req,
             res: res,
             rt: rt,
-            intr: intr
+            intr: intr,
+            referrer: encode(document.referrer)
         }
     };
     
