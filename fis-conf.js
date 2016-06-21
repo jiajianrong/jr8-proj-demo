@@ -21,14 +21,14 @@
  * 
  * 其他
  * 
- * 2016-02-16
- * 新加性能监控功能
- * jr8 release -cw performance
- * jr8 release -comd ../out-your-path publish performance
+ * 2016-06-21
+ * 新加trace功能
+ * jr8 release -cw
+ * jr8 release -comd ../out-your-path publish trace
  * 
  * 2016-03-09
  * 整理jr8及插件:
- * 关键字: isViews performance publish process jr8
+ * 关键字: isViews publish process jr8
  */
 
 
@@ -222,21 +222,6 @@ fis.config.merge({
     deploy: {
         publish: {
             to: '../output_'+(+new Date())
-        }
-    },
-    
-    
-    // --------------------------------
-    // 性能统计server配置
-    // --------------------------------
-    settings: {
-        postpackager: {
-            'performance-framework': {
-                urlPrefix: 'http://10.48.210.28:3000/saveTime?project=daoliu-wddk'
-            },
-            'framework-trace' : {
-                traceUrlPrefix: 'http://log.jr.58888.com/trace?project=daoliu-test&'
-            }
         }
     }
     
