@@ -162,7 +162,12 @@ define("libs/core.trace", function(require, exports, module){
     
     
     var encode = encodeURIComponent,
-        decode = decodeURIComponent;
+        decode = decodeURIComponent,
+        
+        // TODO: 根据项目修改为正确地址
+        TRACE_URL_PREFIX = 'http://log.jr.5888888.com/trace?project=daoliu-test&',
+        INFO_URL_PREFIX = 'http://log.jr.5888888.com/info?project=daoliu-test&';
+    
     
     
     /**
@@ -201,6 +206,20 @@ define("libs/core.trace", function(require, exports, module){
     /**
      * helper
      */
+    var mixin = function(obj1) {
+        var mixins = Array.prototype.slice.call(arguments,1);
+        
+        mixins.forEach(function(o){
+            for(var k in o){
+                obj1[k]=o[k];
+            }
+        });
+    };
+    
+    
+    /**
+     * helper
+     */
     var setCookie = function(key, value, expires, domain){
         document.cookie = key + "=" + encode(value)
             + (domain ? ";domain="+domain : "")
@@ -216,6 +235,7 @@ define("libs/core.trace", function(require, exports, module){
             result = reg.exec(document.cookie);
         return result ? decode(result[2]) : null;
     }
+    
     
     
     /**
@@ -245,12 +265,93 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
+    /**
+     * mobile info
+     */
+    var makeMobileInfo = (function() {
+        
+        var ua = navigator.userAgent,
+            uaMap = {
+                android: /Android|Linux/i.test(ua),
+                iPhone: /iPhone|iPad/i.test(ua),
+                qqbrowser: /qqbrowser/i.test(ua),
+                uc: /ucbrowser/i.test(ua),
+                wx: /micromessager/i.test(ua),
+                wuba: !!getCookie('58ua')
+            },
+            os,
+            browser;
+        
+        
+        function getOS() {
+            return os || (os = uaMap.android ? 'android' : uaMap.iPhone ? 'iphone' : 'others');
+        }
+        
+        function getBrowser() {
+            return browser || (browser = 
+                uaMap.wuba ? '58app' : 
+                    uaMap.wx ? 'wx' : 
+                        uaMap.qqbrowser ? 'qqbrowser' : 
+                            uaMap.uc ? 'uc' : 'others');
+        }
+        
+        
+        return function() {
+            return {
+                os: getOS(),
+                browser: getBrowser()
+            }
+        }
+    })();
     
     
     
     
     /**
-     * 发送
+     * performance info
+     * 没做缓存，不要调多次
+     */
+    var makePerformanceInfo = function() {
+        
+        if ( !performance || !performance.timing )
+            return null;
+        
+        
+        var pt = performance.timing;
+  
+        if (pt.requestStart === 0 || pt.responseStart === 0 || pt.responseEnd === 0 || 
+            pt.responseEnd - pt.responseStart < 0 || pt.domContentLoadedEventStart - pt.navigationStart < 0)
+            return null;
+        
+        
+        var dns = pt.domainLookupEnd - pt.domainLookupStart,
+            conn = pt.connectEnd - pt.connectStart,
+            req = pt.responseStart - pt.requestStart,
+            res = pt.responseEnd - pt.responseStart,
+            rt = pt.responseEnd - pt.navigationStart,
+            intr = pt.domContentLoadedEventStart - pt.navigationStart;
+        
+        
+        return {
+            dns: dns,
+            conn: conn,
+            req: req,
+            res: res,
+            rt: rt,
+            intr: intr
+        }
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
      * @param {Object} traceObj
      * 
      * traceObj格式为
@@ -266,16 +367,53 @@ define("libs/core.trace", function(require, exports, module){
     }
     
     
+    /**
+     * 适配 Trace.send
+     */
+    var TraceProxy = {
+        
+        /**
+         * 打点
+         * @param {Object} traceObj
+         * @param {Object} callback
+         */
+        send: function( traceObj, callback ) {
+            
+            var t = typeof traceObj;
+            
+            if ( t==='string' || t==='number' ) {
+                traceObj = {tid: traceObj}
+            }
+            
+            if ( typeof callback==='string' ) {
+                traceObj.tgtUrl = callback;
+            } else if ( typeof callback==='function' ) {
+                traceObj.callback = callback;
+            }
+            
+            var trace = new Trace(traceObj);
+            trace.send();
+        },
+        
+        /**
+         * 信息统计
+         * @param {Object} traceObj
+         */
+        sendInfo: function( traceObj ) {
+            var trace = new Trace(traceObj);
+            trace.sendInfo();
+        }
+        
+    };
+    
+    
     
     
     Trace.prototype = {
         
-        // 替换成日志server的实际地址
-        traceUrlPrefix: 'http://log.jr.5888888.com/trace?project=daoliu-test&',
-        
 
         /**
-         * 对外暴露接口
+         * 对外暴露接口：发送打点数据
          */
         send: function() {
             
@@ -286,9 +424,7 @@ define("libs/core.trace", function(require, exports, module){
                 callback;
             
             // 包裹trace对象
-            to.page = encode(location.pathname);
-            to._ = +new Date();
-            to.uid = makeUID();
+            this.wrapTraceObj();
             
             // stringify
             traceParams = json2query(to);
@@ -324,14 +460,73 @@ define("libs/core.trace", function(require, exports, module){
             }
             
             
-            // in case https fallback to send image
-            if ( /^https/i.test(location.protocol) )
-                this.sendViaImage( this.traceUrlPrefix+traceParams, callback, isLeave );
-            else
-                this.sendViaScript( this.traceUrlPrefix+traceParams, callback, isLeave );
+            this.sendFacade( TRACE_URL_PREFIX+traceParams, callback, isLeave );
             
         },
         
+        
+        
+        
+        
+        
+        /**
+         * 对外暴露接口：发送基础统计数据
+         */
+        sendInfo: function() {
+            
+            var to = this.traceObj,
+                traceParams;
+            
+            // 包裹trace对象
+            this.wrapTraceObj();
+            
+            // stringify
+            traceParams = json2query(to);
+            
+            
+            this.sendFacade( INFO_URL_PREFIX+traceParams, null, false );
+            
+        },
+        
+        
+        
+        
+        
+        /**
+         * 添加必要信息到trace obj
+         */
+        wrapTraceObj: function() {
+            
+            mixin( this.traceObj, {
+                page: encode(location.pathname),
+                _: +new Date(),
+                uid: makeUID()
+            } );
+            
+        },
+        
+        
+        
+        
+        
+        /**
+         * send统一出口
+         * 
+         * @param {Object} url
+         * @param {Object} cb
+         * @param {Object} leave
+         */
+        sendFacade: function( url, cb, leave ) {
+            
+            var https = /^https/i.test(location.protocol);
+            var args = Array.prototype.slice.call(arguments);
+            
+            if (https)
+                this.sendViaImage.apply(this, args);
+            else
+                this.sendViaScript.apply(this, args);
+            
+        },
         
         
         
@@ -519,7 +714,7 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    // document.addEventListener( "DOMContentLoaded", function() {
+    
     document.body.addEventListener( 'click', function(e){
         
         var traceElement = e.target,
@@ -532,15 +727,13 @@ define("libs/core.trace", function(require, exports, module){
             traceElement = traceElement.parentNode;
         }
         
-        if (!traceElement) {
-            return true;
-        }
+        if (!traceElement)
+            return;
         
         traceObject = traceElement.getAttribute('data-trace');
         
-        if (!traceObject) {
-            return true;
-        }
+        if (!traceObject)
+            return;
         
         // 计算traceObject
         traceObject = /\{/.test(traceObject) ? JSON.parse(traceObject) : { tid: +traceObject };
@@ -551,22 +744,29 @@ define("libs/core.trace", function(require, exports, module){
             var url = traceObject.tgtUrl = ( traceObject.tgtUrl || traceElement.getAttribute('href') );
             if ( ! /(?:^#)|(?:^tel\:)/i.test(url) ) {
                 e.preventDefault();
-            }   
+            }
         }
         
         
-        // 发送打点
-        //-----------
-        //if ( require && require.has && require.has('libs/core.trace') ) {
-        //    var coreTrace = require('libs/core.trace');
-        //    coreTrace.send( traceObject );
-        //}
-        //-----------
         TraceProxy.send( traceObject );
-        
-        return true;
     } );
-    // } );
+    
+    
+    
+    
+    
+    
+    //window.addEventListener('load', function() {
+    document.addEventListener( "DOMContentLoaded", function() {
+        
+        var mobile = makeMobileInfo(),
+            perfor = makePerformanceInfo(),
+            info = {};
+        
+        mixin(info,mobile,perfor);
+        
+        TraceProxy.sendInfo(info);
+    } );
     
     
     
@@ -575,35 +775,6 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    var TraceProxy = {
-        send: function( traceObj, callback ) {
-            
-            var t = typeof traceObj;
-            
-            if ( t==='string' || t==='number' ) {
-                traceObj = {tid: traceObj}
-            }
-            
-            if ( typeof callback==='string' ) {
-                traceObj.tgtUrl = callback;
-            } else if ( typeof callback==='function' ) {
-                traceObj.callback = callback;
-            }
-            
-            var t = new Trace(traceObj);
-            t.send();
-        }
-    };
     
     
     
