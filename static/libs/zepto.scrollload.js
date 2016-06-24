@@ -60,6 +60,7 @@ define( 'libs/zepto.scrollload', function(require, exports, module){
         return $.ajax({
             url: _this.settings.url,
             type: 'get',
+            cache: false,
             data: $.extend( stripReqParams(_this.settings), {page:this.settings.page++} ),
             dataType: 'json'
         })
