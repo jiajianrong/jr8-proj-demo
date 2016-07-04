@@ -38,7 +38,7 @@ define( 'libs/zepto.scrollload', function(require, exports, module){
             var rtnObj = {};
             
             for(var key in settings)
-                if( (typeof settings[key]!='function') && (key!='url') )
+                if( (typeof settings[key]!='function') && (key!='url') && (key!='buffer') )
                     rtnObj[key] = settings[key];
             
             return rtnObj;
