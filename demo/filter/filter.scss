@@ -1,0 +1,60 @@
+
+
+
+.page-body {
+    position: relative;
+    padding-bottom:1.1rem;
+    margin-top: .9rem;
+    
+    
+    .form-group {
+        
+        
+        
+        .form-item {
+            display: -webkit-box;
+            .icon{
+                width:.6rem;
+                height:.6rem;
+                margin-right:.2rem;
+                vertical-align: middle;
+            }
+            .description {
+                line-height: .35rem;
+                padding: .3rem 0;
+                width: 90%;
+                .item-label {
+                    float: left;
+                    .fst-line {
+                        font-size: .3rem;
+                        .num {
+                            color: #f62;
+                        }
+                    }
+                    .fail{
+                        color:#8c9199;
+                    }
+                    .sec-line {
+                        font-size: .22rem;
+                        color: #8c9199;
+                    }
+                }
+                .item-body {
+                    float: right;
+                    text-align: center;
+                    margin-left: 0;
+                    .item-time {
+                        font-size: .22rem;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+}

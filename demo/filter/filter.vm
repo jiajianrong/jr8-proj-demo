@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "filter-bar")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./filter.scss">
+</head>
+<body>
+
+    
+<div class="page-body">
+    <section class="wi-filter-bar">
+        <button id="trantype"><span class="title">交易类型</span></button>
+        <button id="trandate"><span class="title">时间筛选</span></button>
+    </section>
+    <section class="form-group"></section>
+    <div class="loading">加载中...</div>
+    
+</div>
+
+
+
+##------------------------------------
+## scripts
+##------------------------------------
+__FRAMEWORK_CONFIG__
+<script>
+require(['demo/filter/filter'],function(app){
+    app();
+});
+</script>
+        
+</body>
+</html>

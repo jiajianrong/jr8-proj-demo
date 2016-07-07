@@ -120,6 +120,8 @@ button,
 select {
     text-transform: none;
     transform: none;
+    outline: none;
+    border: none;
 }
 
 /* *
@@ -135,6 +137,9 @@ textarea {
     font-family: inherit; /* 1 */
     font-size: 100%; /* 2 */
     margin: 0; /* 3 */
+    -webkit-appearance: none;
+    background: none;
+    outline: none;
 }
 
 /* *
