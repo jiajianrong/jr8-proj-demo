@@ -62,49 +62,18 @@ define("demo/filter/filter", function(require, exports, module) {
 		
 		
 
-        /*
-         * 注释掉events对象里的事件监听
-         * 如有需要可以随时开启
-         */
+        
         new FilterBar({
             
             $el: '.wi-filter-bar',
             
-            /*
-            events: {
-                'click #trantype': function(e){
-                    console.log("dd watch #trantype");
-                },
-                'click #trandate': function(){
-                    console.log("dd watch #trandate");
-                },
-                'click button': function(){
-                    console.log("dd watch tab");
-                }
-            },
-            */
-            
             menus: [{
                 $el: '#trantype',
                 listTpl: __inline('dropdown-item-trantype.html'),
-                /*
-                events: {
-                    'click': function() {
-                        console.log("dditem watch #trantype");
-                    }
-                },
-                */
                 optionOnSelect: retrieve
             }, {
                 $el: '#trandate',
                 listTpl: __inline('dropdown-item-trandate.html'),
-                /*
-                events: {
-                    'click': function() {
-                        console.log("dditem watch #trandate");
-                    }
-                },
-                */
                 optionOnSelect: retrieve
             }]
         })
