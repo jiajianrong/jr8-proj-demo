@@ -699,7 +699,9 @@ define("libs/core.trace", function(require, exports, module){
             var tgtUrl = this.traceObj.tgtUrl,
                 isLeave = false;
             
-            isLeave = tgtUrl && ( ! /(?:javascript\:)|(?:^#)/i.test(tgtUrl) );
+            isLeave = tgtUrl && 
+                      ( !/^#/i.test(tgtUrl) ) && 
+                      ( /^\s*javascript/i.test(tgtUrl) && /(?:history)|(?:go)/i.test(tgtUrl) );
             
             return isLeave;
         }
