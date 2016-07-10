@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "demo-touchevent")
+    #parse('/widget/header/header.vm')
+</head>
+<body>
+    
+    <div id="div" style="border: 1px solid red; height: 1000px;"></div>
+
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['demo/touchevent/touchevent'],function(app){
+        app();
+    });
+    </script>
+    
+    
+    
+</body>
+</html>

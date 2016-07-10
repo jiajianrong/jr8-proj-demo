@@ -98,7 +98,7 @@ define( 'libs/wi.FilterMenu', function(require, exports, module){
     
     FilterMenu.prototype.renderList = function() {
         var $el = this.$el,
-            top = $el.position().top + $el.height(),
+            top = $el.offset().top + $el.height(),
     
             tpl = $(this.options.listTpl),
             $tpl = $(tpl).css('top', top);
