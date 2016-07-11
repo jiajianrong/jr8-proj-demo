@@ -34,9 +34,7 @@ define("page/page-list/page-list", function(require, exports, module){
         
         
         
-        //var t = require('libs/core.trace');
-        //t.send(555);
-        
+
         var $ = require('zepto'),
             ScrollLoad = require('libs/zepto.scrollload'),
             

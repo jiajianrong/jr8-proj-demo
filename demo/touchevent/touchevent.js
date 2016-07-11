@@ -14,14 +14,14 @@ define("demo/touchevent/touchevent", function(require, exports, module){
             
             div.innerText = (div.innerText || '') + '\n' + 
             
-                     parseInt(ct.screenY) + ', ' + 
-                     parseInt(ct.clientY) + ', ' + 
-                     parseInt(ct.pageY) + '\n' + 
-                     
-                     parseInt(tt.screenY) + ', ' + 
-                     parseInt(tt.clientY) + ', ' + 
-                     parseInt(tt.pageY);
-         })
+                             parseInt(ct.screenY) + ', ' + 
+                             parseInt(ct.clientY) + ', ' + 
+                             parseInt(ct.pageY) + '\n' + 
+                             
+                             parseInt(tt.screenY) + ', ' + 
+                             parseInt(tt.clientY) + ', ' + 
+                             parseInt(tt.pageY);
+        })
         
     };
 });

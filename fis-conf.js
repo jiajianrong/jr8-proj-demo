@@ -72,7 +72,7 @@ var common_roadmap_path = [
         
     /* 配置文件 */
     {
-        reg: /^\/(fis-conf-.+|README.*)$/i,
+        reg: /^\/(fis-conf-.+|README.*|build\.sh)$/i,
         release: false
     },
     
@@ -98,6 +98,11 @@ if (IS_PUBLISH)
     
 common_roadmap_path = common_roadmap_path.concat([
 
+    /* publish的时候不需要server.conf */
+    {
+        reg: /^\/(server\.conf)$/i,
+        release: false
+    },
     /* 模拟数据 */
     {
         reg: /^\/test\/.*/i,
