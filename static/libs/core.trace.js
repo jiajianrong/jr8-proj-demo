@@ -499,7 +499,7 @@ define("libs/core.trace", function(require, exports, module){
         wrapTraceObj: function() {
             
             mixin( this.traceObj, {
-                page: encode(location.pathname),
+                page: encode(location.href),
                 _: +new Date(),
                 uid: makeUID()
             } );

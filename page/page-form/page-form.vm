@@ -63,7 +63,7 @@
         <input type="hidden" class="editFlag" data-value='$!{editFlag}' />
 
         <div class="loan-item flex-box">
-            <div>类型1</div>
+            <div>类型</div>
             <select id="contractType" name="contractType" data-trace="1">
                 #ModuleMap( $contractTypeMap $contractType )
             </select>
