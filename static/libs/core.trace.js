@@ -284,7 +284,7 @@ define("libs/core.trace", function(require, exports, module){
         
         
         function getOS() {
-            return os || (os = uaMap.android ? 'android' : uaMap.iPhone ? 'iphone' : 'others');
+            return os || (os = uaMap.android ? 'android' : uaMap.iPhone ? 'iphone' : ua);
         }
         
         function getBrowser() {
@@ -292,14 +292,19 @@ define("libs/core.trace", function(require, exports, module){
                 uaMap.wuba ? '58app' : 
                     uaMap.wx ? 'wx' : 
                         uaMap.qqbrowser ? 'qqbrowser' : 
-                            uaMap.uc ? 'uc' : 'others');
+                            uaMap.uc ? 'uc' : ua);
+        }
+        
+        function getScreenSize() {
+            return window.screen.height + '*' + window.screen.width + '*' + window.devicePixelRatio;
         }
         
         
         return function() {
             return {
                 os: getOS(),
-                browser: getBrowser()
+                browser: getBrowser(),
+                scrsize: getScreenSize()
             }
         }
     })();
