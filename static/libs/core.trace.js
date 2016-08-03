@@ -273,12 +273,15 @@ define("libs/core.trace", function(require, exports, module){
         var ua = navigator.userAgent,
             uaMap = {
                 android: /Android|Linux/i.test(ua),
-                iPhone: /iPhone|iPad/i.test(ua),
-                qqbrowser: /qqbrowser/i.test(ua),
-                uc: /ucbrowser/i.test(ua),
-                wx: /micromessager/i.test(ua),
-                wuba: !!getCookie('58ua')
+                iPhone: /iPhone|iPad/i.test(ua)
             },
+            uaArr = [
+                {name: '58app',      value: !!getCookie('58ua')},
+                {name: 'wx',         value: /micromessenger/ig.test(ua)},
+                {name: 'qqbrowser',  value: /qqbrowser/i.test(ua)},
+                {name: 'uc',         value: /ucbrowser/i.test(ua)},
+                {name: ua,           value: true}
+            ],
             os,
             browser;
         
@@ -288,11 +291,11 @@ define("libs/core.trace", function(require, exports, module){
         }
         
         function getBrowser() {
-            return browser || (browser = 
-                uaMap.wuba ? '58app' : 
-                    uaMap.wx ? 'wx' : 
-                        uaMap.qqbrowser ? 'qqbrowser' : 
-                            uaMap.uc ? 'uc' : ua);
+            if (browser) return browser;
+            
+            for ( var i=0; i<uaArr.length; i++ ) {
+                if ( uaArr[i].value ) return ( browser = uaArr[i].name );
+            }
         }
         
         function getScreenSize() {
