@@ -8,6 +8,8 @@
 <body>
     #set($title = "58金融web demo系统登录")
     
+    <span id="title" style="display:block; font-size: 40px; border: 1px dotted gray;" selfdef="come on">title</span>
+    <a id="anchor" data-o='{"p1":"v1"}' href="baidu.com" style="font-size: 40px; border: 1px dotted gray;">title</a>
     
     <form id="form" method="post" action="/login">
         
@@ -29,7 +31,9 @@
         </ul>
         
         <section class="actions">
-            <button type="button" class="btn-submit" data-trace="3">登录</button>
+            <section class="just-for-test">
+                <button type="button" class="btn-submit" data-trace="3">登录</button>
+            </section>
         </section>
             
     </form>
@@ -44,6 +48,15 @@
     <script>
     require(['page/login/login'],function(app){
         app();
+    });
+    </script>
+    <script>
+    console.log(document.readyState);
+    document.addEventListener('DOMContentLoaded',function(){
+        console.log(document.readyState);
+        setTimeout(function(){
+            console.log(document.readyState);
+        })
     });
     </script>
 </body>
