@@ -165,6 +165,9 @@ define("libs/core.trace", function(require, exports, module){
         decode = decodeURIComponent,
         
         // TODO: 根据项目修改为正确地址
+        COOKIE_KEY = 'jr8_t_c_v1',
+        COOKIE_DOMAIN = '.58.com',
+        
         TRACE_URL_PREFIX = 'http://log.jr.5888888.com/trace?project=daoliu-test&',
         INFO_URL_PREFIX = 'http://log.jr.5888888.com/info?project=daoliu-test&';
     
@@ -243,8 +246,7 @@ define("libs/core.trace", function(require, exports, module){
      */
     var makeUID = (function () {
         
-        var COOKIE_KEY = 'jr8_t_c',
-            uid = getCookie(COOKIE_KEY),
+        var uid = getCookie(COOKIE_KEY),
             exp,
             t;
         
@@ -254,7 +256,7 @@ define("libs/core.trace", function(require, exports, module){
             t = exp.getTime();
             t += 1000*3600*24*365*10;
             exp.setTime(t);
-            setCookie( COOKIE_KEY, uid, exp );
+            setCookie( COOKIE_KEY, uid, exp, COOKIE_DOMAIN );
         }
         
         return function() {
