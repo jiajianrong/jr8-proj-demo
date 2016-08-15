@@ -53,11 +53,14 @@
     <script>
     console.log(document.readyState);
     document.addEventListener('DOMContentLoaded',function(){
+        console.log('DOMContentLoaded');
         console.log(document.readyState);
         setTimeout(function(){
             console.log(document.readyState);
         })
+        console.log('DOMContentLoaded');
     });
+    console.log(document.readyState);
     </script>
 </body>
 </html>
