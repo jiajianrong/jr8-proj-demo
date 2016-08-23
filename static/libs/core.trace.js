@@ -755,7 +755,7 @@ define("libs/core.trace", function(require, exports, module){
             return;
         
         // 计算traceObject
-        traceObject = /\{/.test(traceObject) ? JSON.parse(traceObject) : { tid: +traceObject };
+        traceObject = /\{/.test(traceObject) ? JSON.parse(traceObject) : { tid: traceObject };
         
         
         // 当前trace元素是a标签？

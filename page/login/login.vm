@@ -18,7 +18,7 @@
                 <label class="icon-mobile form-label-icon"></label>
                 <div class="w-input">
                     <input type="text" name="username" id="username" placeholder="用户名" 
-                           maxlength="20" autocomplete="off" value="$!{username}" required data-trace="1">
+                           maxlength="20" autocomplete="off" value="$!{username}" required data-trace="support_words">
                 </div>
             </li>
             <li>
