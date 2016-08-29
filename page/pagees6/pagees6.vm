@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #set($title = "登录")
+    #parse('/widget/header/header.vm')
+    <link rel="stylesheet" href="./pagees6.scss">
+</head>
+<body>
+    
+    <a href='javascript:;' data-trace='1'>auto-1</a><br /><br />
+    
+    
+    
+    
+    ##------------------------------------
+    ## scripts
+    ##------------------------------------
+    __FRAMEWORK_CONFIG__
+    <script>
+    require(['page/pagees6/pagees6'],function(app){
+        app.go();
+    });
+    </script>
+</body>
+</html>

@@ -21,6 +21,9 @@
  * 
  * 其他
  * 
+ * 2016-08-24
+ * 新加es6功能
+ * 
  * 2016-06-21
  * 新加trace功能
  * jr8 release -cw
@@ -140,6 +143,13 @@ common_roadmap_path = common_roadmap_path.concat([
     },
 
     {
+        reg: /^\/page\/pagees6\/pagees6\.js$/i,
+        url: '/static/page/pagees6/pagees6.js',
+        release: '/resources/static/page/pagees6/pagees6.js',
+        isES6: true
+    },
+
+    {
         reg: /^\/(page|widget)\/(.+)$/i,
         url: '/static/$1/$2',
         release: '/resources/static/$1/$2'
@@ -175,6 +185,13 @@ common_roadmap_path = common_roadmap_path.concat([
         release: '/WEB-INF/views/$1/$2',
         useCache: false,  // 2016-03-31 临时关闭cache保证deploy dep
         isViews: true
+    },
+    
+    {
+        reg: /^\/page\/pagees6\/pagees6\.js$/i,
+        url: '/static/page/pagees6/pagees6.js',
+        release: '/static/page/pagees6/pagees6.js',
+        isES6: true
     },
     
     {
@@ -232,3 +249,6 @@ fis.config.merge({
     
     
 });
+
+
+
