@@ -143,13 +143,6 @@ common_roadmap_path = common_roadmap_path.concat([
     },
 
     {
-        reg: /^\/page\/pagees6\/pagees6\.js$/i,
-        url: '/static/page/pagees6/pagees6.js',
-        release: '/resources/static/page/pagees6/pagees6.js',
-        isES6: true
-    },
-
-    {
         reg: /^\/(page|widget)\/(.+)$/i,
         url: '/static/$1/$2',
         release: '/resources/static/$1/$2'
@@ -185,13 +178,6 @@ common_roadmap_path = common_roadmap_path.concat([
         release: '/WEB-INF/views/$1/$2',
         useCache: false,  // 2016-03-31 临时关闭cache保证deploy dep
         isViews: true
-    },
-    
-    {
-        reg: /^\/page\/pagees6\/pagees6\.js$/i,
-        url: '/static/page/pagees6/pagees6.js',
-        release: '/static/page/pagees6/pagees6.js',
-        isES6: true
     },
     
     {
@@ -231,7 +217,8 @@ fis.config.merge({
         
         ext: {
             vm: IS_PUBLISH ? 'html' : 'vm',
-            scss: 'css'
+            scss: 'css',
+            es6: 'js'
         },
     
         path: common_roadmap_path.concat(fis.config.get('roadmap.path', []))
@@ -246,8 +233,6 @@ fis.config.merge({
             to: '../output_'+(+new Date())
         }
     }
-    
-    
 });
 
 
