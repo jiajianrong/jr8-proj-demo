@@ -10,7 +10,7 @@
     <a href='javascript:;' data-trace='1'>auto-1</a><br /><br />
     
     
-    
+    <div data-a="111" id="div" name="div">div</div>
     
     ##------------------------------------
     ## scripts
