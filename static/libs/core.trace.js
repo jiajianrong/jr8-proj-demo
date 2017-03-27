@@ -279,12 +279,20 @@ define("libs/core.trace", function(require, exports, module){
                 android: /Android|Linux/i.test(ua),
                 iPhone: /iPhone|iPad/i.test(ua)
             },
+            /*
+             * 2017-03-27 增加ua类型判断
+             */
             uaArr = [
-                {name: '58app',      value: !!getCookie('58ua')},
-                {name: 'wx',         value: /micromessenger/ig.test(ua)},
-                {name: 'qqbrowser',  value: /qqbrowser/i.test(ua)},
-                {name: 'uc',         value: /ucbrowser/i.test(ua)},
-                {name: ua,           value: true}
+                {name: '58app',          value: !!getCookie('58ua')},
+                {name: 'wx',             value: /micromessenger/ig.test(ua)},
+                {name: 'qqbrowser',      value: /qqbrowser/i.test(ua)},
+                {name: 'uc',             value: /ucbrowser/i.test(ua)},
+                {name: 'sougoubrowser',  value: /qqbrowser/i.test(ua)},
+                {name: 'baidubrowser',   value: /baidubrowser/i.test(ua)},
+                {name: 'baiduapp',       value: /baiduboxapp/i.test(ua)},
+                {name: 'samsungbrowser', value: /samsungbrowser/i.test(ua)},
+                {name: 'miuibrowser',    value: /miuibrowser/i.test(ua)},
+                {name: ua,               value: true}
             ],
             os,
             browser;
@@ -734,7 +742,7 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    document.body.addEventListener( 'click', function(e){
+    document.body.addEventListener( 'click', function __trace(e){
         
         var traceElement = e.target,
             traceObject;
@@ -775,17 +783,25 @@ define("libs/core.trace", function(require, exports, module){
     
     
     
-    //window.addEventListener('load', function() {
-    document.addEventListener( "DOMContentLoaded", function() {
+    
+    /*
+     * 2017-03-27 增加 dom readystate 判断
+     */
+    var __info = function() {
         
         var mobile = makeMobileInfo(),
             perfor = makePerformanceInfo(),
             info = {};
         
-        mixin(info,mobile,perfor);
+        mixin( info, mobile, perfor );
         
-        TraceProxy.sendInfo(info);
-    } );
+        TraceProxy.sendInfo( info );
+    };
+    
+    if ( /complete|loaded|interactive/.test(document.readyState) && document.body ) 
+        __info();
+    else 
+        document.addEventListener( "DOMContentLoaded", __info );
     
     
     

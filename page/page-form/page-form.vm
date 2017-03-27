@@ -121,10 +121,9 @@
         <div class="loan-item flex-box">
             <div>类型</div>
             <div class="col-1">
-                
+                <input class="col-1" type="text" value="$!{frameNo}" name="frameNo" 
+                    data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' data-trace="click_frameNo" />
             </div>
-            <input class="col-1" type="text" value="$!{frameNo}" name="frameNo" 
-                data-validate='{"errmsg":"必须为数字或字母","regexp":"^\\w+$"}' data-trace="7" />
         </div>
         <div class="loan-item flex-box">
             <div>类型</div>
