@@ -283,16 +283,16 @@ define("libs/core.trace", function(require, exports, module){
              * 2017-03-27 增加ua类型判断
              */
             uaArr = [
-                {name: '58app',          value: !!getCookie('58ua')},
-                {name: 'wx',             value: /micromessenger/ig.test(ua)},
-                {name: 'qqbrowser',      value: /qqbrowser/i.test(ua)},
-                {name: 'uc',             value: /ucbrowser/i.test(ua)},
-                {name: 'sougoubrowser',  value: /qqbrowser/i.test(ua)},
-                {name: 'baidubrowser',   value: /baidubrowser/i.test(ua)},
-                {name: 'baiduapp',       value: /baiduboxapp/i.test(ua)},
-                {name: 'samsungbrowser', value: /samsungbrowser/i.test(ua)},
-                {name: 'miuibrowser',    value: /miuibrowser/i.test(ua)},
-                {name: ua,               value: true}
+                {name: '58app',               value: !!getCookie('58ua')},
+                {name: 'wx',                  value: /micromessenger/ig.test(ua)},
+                {name: 'qqbrowser',           value: /qqbrowser/i.test(ua)},
+                {name: 'uc',                  value: /ucbrowser/i.test(ua)},
+                {name: 'sogoumobilebrowser',  value: /sogoumobilebrowser/i.test(ua)},
+                {name: 'baidubrowser',        value: /baidubrowser/i.test(ua)},
+                {name: 'baiduapp',            value: /baiduboxapp/i.test(ua)},
+                {name: 'samsungbrowser',      value: /samsungbrowser/i.test(ua)},
+                {name: 'miuibrowser',         value: /miuibrowser/i.test(ua)},
+                {name: ua,                    value: true}
             ],
             os,
             browser;
