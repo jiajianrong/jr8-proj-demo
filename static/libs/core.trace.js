@@ -168,8 +168,8 @@ define("libs/core.trace", function(require, exports, module){
         COOKIE_KEY = 'jr8_t_c_v1',
         COOKIE_DOMAIN = '.58.com',
         
-        TRACE_URL_PREFIX = 'http://log.jr.5888888.com/trace?project=daoliu-test&',
-        INFO_URL_PREFIX = 'http://log.jr.5888888.com/info?project=daoliu-test&';
+        TRACE_URL_PREFIX = 'http://127.0.0.1:3000/trace?project=daoliu-test&',
+        INFO_URL_PREFIX = 'http://127.0.0.1:3000/info?project=daoliu-test&';
     
     
     
@@ -543,6 +543,21 @@ define("libs/core.trace", function(require, exports, module){
             
             var https = /^https/i.test(location.protocol);
             var args = Array.prototype.slice.call(arguments);
+            
+            /**
+             * 2017-03-30 增加navigator.sendBeacon判断
+             */
+            if(navigator.sendBeacon) {
+                // AB test: 验证sendBeacon的有效性
+                if( Math.random() < 0.5 ) {
+                    args[0] += '&sendType=sendBeacon';
+                    this.sendViaNavBeac.apply(this, args);
+                } else {
+                    args[0] += '&sendType=normal';
+                }
+            }
+            
+            
             /* 2017-04-24 日志服务器已支持https
             if (https)
                 this.sendViaImage.apply(this, args);
@@ -556,10 +571,31 @@ define("libs/core.trace", function(require, exports, module){
         
         
         /**
+         * navigator.sendBeacon方式发送打点
+         *
+         * @param traceUrl
+         * @param callback
+         * @param isLeave
+         */
+        sendViaNavBeac: function (traceUrl, callback, isLeave) {
+
+            window.navigator.sendBeacon(traceUrl);
+
+            callback = callback || function () {};
+
+            callback.apply(null);
+        },
+        
+        
+        
+        
+        
+        
+        /**
          * 用script.src方式发送，用来替代image.src
          * 
-         * @param {Object} traceUrl
-         * @param {Object} callback
+         * @param traceUrl
+         * @param callback
          */
         sendViaScript: function(traceUrl, callback, isLeave) {
             
@@ -614,8 +650,8 @@ define("libs/core.trace", function(require, exports, module){
         /**
          * 用image.src发送打点
          * 
-         * @param {Object} traceUrl
-         * @param {Object} callback
+         * @param traceUrl
+         * @param callback
          */
         sendViaImage: function(traceUrl, callback, isLeave) {
             
