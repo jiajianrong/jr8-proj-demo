@@ -292,6 +292,8 @@ define("libs/core.trace", function(require, exports, module){
                 {name: 'baiduapp',            value: /baiduboxapp/i.test(ua)},
                 {name: 'samsungbrowser',      value: /samsungbrowser/i.test(ua)},
                 {name: 'miuibrowser',         value: /miuibrowser/i.test(ua)},
+                {name: 'vivo',                value: /vivo/i.test(ua)},
+                {name: 'ganji_app',           value: /ganji/i.test(ua)},
                 {name: ua,                    value: true}
             ],
             os,
@@ -541,11 +543,11 @@ define("libs/core.trace", function(require, exports, module){
             
             var https = /^https/i.test(location.protocol);
             var args = Array.prototype.slice.call(arguments);
-            
+            /* 2017-04-24 日志服务器已支持https
             if (https)
                 this.sendViaImage.apply(this, args);
-            else
-                this.sendViaScript.apply(this, args);
+            else*/
+            this.sendViaScript.apply(this, args);
             
         },
         
