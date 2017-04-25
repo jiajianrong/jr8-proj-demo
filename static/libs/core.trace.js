@@ -547,11 +547,12 @@ define("libs/core.trace", function(require, exports, module){
             /**
              * 2017-03-30 增加navigator.sendBeacon判断
              */
-            if(navigator.sendBeacon) {
+            if (navigator.sendBeacon) {
                 // AB test: 验证sendBeacon的有效性
                 if( Math.random() < 0.5 ) {
                     args[0] += '&sendType=sendBeacon';
                     this.sendViaNavBeac.apply(this, args);
+                    return;
                 } else {
                     args[0] += '&sendType=normal';
                 }
