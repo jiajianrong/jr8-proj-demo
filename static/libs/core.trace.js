@@ -294,7 +294,7 @@ define("libs/core.trace", function(require, exports, module){
                 {name: 'miuibrowser',         value: /miuibrowser/i.test(ua)},
                 {name: 'vivo',                value: /vivo/i.test(ua)},
                 {name: 'ganji_app',           value: /ganji/i.test(ua)},
-                {name: ua,                    value: true}
+                {name: 'others',              value: true}
             ],
             os,
             browser;
@@ -321,7 +321,8 @@ define("libs/core.trace", function(require, exports, module){
             return {
                 os: getOS(),
                 browser: getBrowser(),
-                scrsize: getScreenSize()
+                scrsize: getScreenSize(),
+                fullua: ua
             }
         }
     })();
