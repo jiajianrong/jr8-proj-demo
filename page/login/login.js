@@ -1,9 +1,9 @@
 
 define("page/login/login", function(require, exports, module){
     
-
+    console.log('login def')
     module.exports = function(opt) {
-        
+        console.log('login run')
         var $ = require('zepto');
         require('libs/zepto.info');
         //require.async('libs/zepto.date');

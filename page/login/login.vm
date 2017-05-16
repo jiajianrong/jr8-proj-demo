@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+    console.log(document.readyState);
+    document.addEventListener('DOMContentLoaded',function(){
+        console.log('DOMContentLoaded');
+        console.log(document.readyState);
+        setTimeout(function(){
+            console.log(document.readyState);
+        })
+        console.log('DOMContentLoaded');
+    });
+    console.log(document.readyState);
+    </script>
     #set($title = "登录")
     #parse('/widget/header/header.vm')
     <link rel="stylesheet" href="./login.scss">
@@ -50,17 +62,6 @@
         app();
     });
     </script>
-    <script>
-    console.log(document.readyState);
-    document.addEventListener('DOMContentLoaded',function(){
-        console.log('DOMContentLoaded');
-        console.log(document.readyState);
-        setTimeout(function(){
-            console.log(document.readyState);
-        })
-        console.log('DOMContentLoaded');
-    });
-    console.log(document.readyState);
-    </script>
+
 </body>
 </html>
