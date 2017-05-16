@@ -317,12 +317,34 @@ define("libs/core.trace", function(require, exports, module){
         }
         
         
+        // 探测浏览器是否支持localStorage
+        function lsSupport() {
+            var flag = null,    // 
+                key = "jr8_ls_detect";
+            
+            return function() {
+                if(flag === null) {
+                    try {
+                        flag = (window.localStorage.setItem(key, 1), 
+                                window.localStorage.getItem(key), 
+                                window.localStorage.removeItem(key), 
+                                1);
+                    } catch (e) {
+                        flag = 0;
+                    }
+                }
+                return flag;
+            };
+        };
+        
+        
         return function() {
             return {
                 os: getOS(),
                 browser: getBrowser(),
                 scrsize: getScreenSize(),
-                fullua: ua
+                fullua: ua,
+                lsSupport: lsSupport()()
             }
         }
     })();
